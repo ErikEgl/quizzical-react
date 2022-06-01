@@ -1,0 +1,8 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Karla, sans-serif;
+}
+
+/*# sourceMappingURL=index.css.map */

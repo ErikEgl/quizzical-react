@@ -3,6 +3,8 @@
 @import "./assets/scss/base";
 @import "./assets/scss/main";
 
+@import "./components/Question/Question";
+@import "./components/Button/Button";
 
-// @import "./components/Question/Question";
-// @import "./components/Button/Button";
+@import "./components/QuestionsPage/QuestionsPage";
+@import "./components/FirstPage/FirstPage";

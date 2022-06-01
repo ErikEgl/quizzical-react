@@ -1,11 +1,11 @@
-import Button from "./components/Button/Button";
-import Question from "./components/Question/Question";
+import FirstPage from "./components/FirstPage/FirstPage";
 
 function App() {
-  return <>
-  <Button/>
-  <Question/>
-  </>;
+  return (
+    <>
+      <FirstPage />
+    </>
+  );
 }
 
 export default App;

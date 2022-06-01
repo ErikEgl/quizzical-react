@@ -3,9 +3,7 @@ import React from "react";
 function Button(props) {
   return (
     <>
-      <div className="button">
-       6546
-      </div>
+      <button className="button">Start quiz</button>
     </>
   );
 }
