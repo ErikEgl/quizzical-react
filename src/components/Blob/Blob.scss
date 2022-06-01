@@ -1,0 +1,13 @@
+.blob {
+    display: block;
+    &.blob-yellow {    
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    &.blob-blue {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}

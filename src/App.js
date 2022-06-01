@@ -4,9 +4,12 @@ import Blob from "./components/Blob/Blob";
 function App() {
   return (
     <>
-      <Blob color={"yellow"}/>
-      <FirstPage />
-      <Blob color={"blue"}/>
+      <main>
+        <Blob color={"yellow"}/>
+        <FirstPage />
+        <Blob color={"blue"}/>
+      </main>
+      
     </>
   );
 }
