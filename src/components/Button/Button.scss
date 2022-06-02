@@ -1,10 +1,40 @@
 button {
-    border-radius: $primary-border-radius;
-    font-weight: 500;
-    border: 1px solid transparent;
-    &.button-primary {
-        padding: 16px 60px;
-        color: $primary-btn-txt-color;
-        background-color: $primary-btn-bg-color;
+  border-radius: $primary-border-radius;
+  font-weight: 500;
+  border: 1px solid transparent;
+  background-color: transparent;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &.button-primary {
+    padding: 1rem 3.75rem;
+    color: $light-1;
+    background-color: $dark-1;
+    &:hover {
+        color: $dark-1;
+        border-color: $dark-1;
+        background-color: transparent;
     }
+  }
+  &.button-secondary {
+    color: $dark-1;
+    border-color: $dark-1;
+  }
+  &.button-choosed {
+    color: $dark-2;
+    background-color: $light-2;
+  }
+  &.button-unchoosed {
+    color: $dark-2;
+    border-color: $dark-1;
+  }
+  &.button-success {
+    background-color: $success-1;
+    opacity: $btn-opacity;
+  }
+  &.button-error {
+    background-color: $error-1;
+    opacity: $btn-opacity;
+  }
 }

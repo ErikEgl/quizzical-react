@@ -45,11 +45,40 @@ button {
   border-radius: 10px;
   font-weight: 500;
   border: 1px solid transparent;
+  background-color: transparent;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 button.button-primary {
-  padding: 16px 60px;
+  padding: 1rem 3.75rem;
   color: #F5F7FB;
   background-color: #4D5B9E;
+}
+button.button-primary:hover {
+  color: #4D5B9E;
+  border-color: #4D5B9E;
+  background-color: transparent;
+}
+button.button-secondary {
+  color: #4D5B9E;
+  border-color: #4D5B9E;
+}
+button.button-choosed {
+  color: #293264;
+  background-color: #D6DBF5;
+}
+button.button-unchoosed {
+  color: #293264;
+  border-color: #4D5B9E;
+}
+button.button-success {
+  background-color: #94D7A2;
+  opacity: 0.5;
+}
+button.button-error {
+  background-color: #F8BCBC;
+  opacity: 0.5;
 }
 
 .blob {
