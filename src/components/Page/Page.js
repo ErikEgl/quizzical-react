@@ -32,8 +32,16 @@ function Page(props) {
   console.log(questionItem)
   return (
     <>
-      {questions.length > 0 ? (
-     <>{questionItem}</>
+      {quizItem.length > 0 ? (
+     <>
+      <section>
+        {quizItem}
+        <div className="check-info">
+
+          <Button className='button-primary ' content="Check answers " />
+        </div>
+      </section>
+     </>
        ) : ( 
         <section>
         <h1>Quizzical</h1>
