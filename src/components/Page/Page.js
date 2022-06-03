@@ -10,13 +10,23 @@ function Page(props) {
   const [questions, setQuestions] = React.useState([])
 
   function startQuiz() {
-    fetch('https://opentdb.com/api.php?amount=10')
+    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
     .then((response) =>  response.json())
     .then(data => setQuestions(data.results));
   }
 
-  const questionItem = questions.map((question, index) => {
-    return <Question key={index} question={question.question} correct_answer={question.correct_answer}/>;
+  const quizItem = questions.map((question, index) => {
+    return (
+      <div className="quiz-item">
+        <Question key={index} question={question.question} />
+        <div className="quiz-answers-wrap">
+          <Button className='button-secondary' content={question.correct_answer} />
+          <Button className='button-secondary' content={question.incorrect_answers[0]} />
+          <Button className='button-secondary' content={question.incorrect_answers[1]} />
+          <Button className='button-secondary' content={question.incorrect_answers[2]} />
+        </div>
+    </div>
+    )
     // return index
   }) 
   console.log(questionItem)
