@@ -1,4 +1,38 @@
-section {
-    text-align: center;
-    
+.quiz-item {
+    padding-block: 25px;
+    border-bottom: 1px solid $light-2;
+}
+
+
+.quiz-answers-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  grid-auto-rows: 1fr;
+  button:nth-child(1) {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  button:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  button:nth-child(3) {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  button:nth-child(4) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  @include media($md) {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+
+.check-info {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
