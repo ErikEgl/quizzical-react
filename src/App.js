@@ -1,4 +1,4 @@
-import FirstPage from "./components/FirstPage/FirstPage";
+import Page from "./components/Page/Page";
 import Blob from "./components/Blob/Blob";
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <>
       <main>
         <Blob color={"yellow"}/>
-        <FirstPage />
+        <Page />
         <Blob color={"blue"}/>
       </main>
       
