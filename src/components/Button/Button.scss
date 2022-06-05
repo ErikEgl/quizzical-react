@@ -21,14 +21,14 @@ button {
     color: $dark-1;
     border-color: $dark-1;
   }
-  &.button-choosed {
+  &.button-selected {
     color: $dark-2;
     background-color: $light-2;
   }
-  &.button-unchoosed {
+  &.button-unselected {
     color: $dark-2;
     border-color: $dark-1;
-  }
+  } 
   &.button-success {
     background-color: $success-1;
     opacity: $btn-opacity;

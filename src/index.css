@@ -78,11 +78,11 @@ button.button-secondary {
   color: #4D5B9E;
   border-color: #4D5B9E;
 }
-button.button-choosed {
+button.button-selected {
   color: #293264;
   background-color: #D6DBF5;
 }
-button.button-unchoosed {
+button.button-unselected {
   color: #293264;
   border-color: #4D5B9E;
 }
