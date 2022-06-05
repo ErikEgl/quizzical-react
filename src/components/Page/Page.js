@@ -1,55 +1,115 @@
 import Button from "../Button/Button";
-import Question from "../Question/Question";
-
+// import Question from "../Question/Question";
 import React from "react";
-
-
-
+import { nanoid } from "nanoid";
 
 function Page(props) {
-  const [questions, setQuestions] = React.useState([])
+  const [fetchedQuestions, setFetchedQuestions] = React.useState([]);
+  const [restructuredQuestionsArray, setRestructuredQuestionsArray] = React.useState([]);
+  const [startGame, setStartGame] = React.useState(false);
+
+  const API_URL = "https://opentdb.com/api.php?amount=10&type=multiple"
+
+  React.useEffect(() => {
+    fetch(API_URL)
+      .then((response) => response.json())
+      .then((data) => setFetchedQuestions(data.results));
+  }, []);
 
   function startQuiz() {
-    fetch('https://opentdb.com/api.php?amount=10&type=multiple')
-    .then((response) =>  response.json())
-    .then(data => setQuestions(data.results));
+    const newQuestionsArr = [];
+    fetchedQuestions.map((question) => {
+      newQuestionsArr.push({
+        category: question.category,
+        id: nanoid(),
+        question: question.question,
+        answers: [
+          {
+            id: nanoid(),
+            answer: question.correct_answer,
+            isCorrect: true,
+            isHeld: true,
+            key: nanoid(),
+          },
+          {
+            id: nanoid(),
+            answer: question.incorrect_answers[0],
+            isCorrect: false,
+            isHeld: false,
+            key: nanoid(),
+          },
+          {
+            id: nanoid(),
+            answer: question.incorrect_answers[1],
+            isCorrect: false,
+            isHeld: false,
+            key: nanoid(),
+          },
+          {
+            id: nanoid(),
+            answer: question.incorrect_answers[2],
+            isCorrect: false,
+            isHeld: false,
+            key: nanoid(),
+          },
+        ],
+      });
+      setRestructuredQuestionsArray(newQuestionsArr);
+      return newQuestionsArr
+    });
+    setStartGame((prevVal) => !prevVal);
+    // arr.sort(() => Math.random() - 0.5)
   }
 
-  const quizItem = questions.map((question, index) => {
+  function holdAnswer(id) {
+    console.log(id);
+      // setRestructuredQuestionsArray(prevArray => {
+      //   return prevArray.map(prevArrayAnswers => {
+      //       return prevArrayAnswers.answers.map(prevAnswer => {
+      //         return prevAnswer;
+      //       });
+      //   });
+      // });
+  }
+  
+
+
+
+  const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
-      <div className="quiz-item">
-        <Question key={index} question={question.question} />
-        <div className="quiz-answers-wrap">
-          <Button className='button-secondary' content={question.correct_answer} />
-          <Button className='button-secondary' content={question.incorrect_answers[0]} />
-          <Button className='button-secondary' content={question.incorrect_answers[1]} />
-          <Button className='button-secondary' content={question.incorrect_answers[2]} />
-        </div>
-    </div>
-    )
-    // return index
-  }) 
-  console.log(questionItem)
+      <div key={item.id} className="quiz-item">
+        
+        {item.question && <h2 dangerouslySetInnerHTML={{ __html: item.question }} />}
+        {item.answers && <div className="quiz-answers-wrap">
+            {item.answers.map(el => {
+              return <Button onClick={(id) => holdAnswer(el.id)} className={el.isHeld === false ? "button-unselected" : "button-selected"} key={el.key} answer={el.answer} />
+            })}
+        </div>}
+      </div>
+    );
+  });
+  // button-unchoosed
+  // button-secondary
   return (
     <>
-      {quizItem.length > 0 ? (
-     <>
-      <section>
-        {quizItem}
-        <div className="check-info">
-
-          <Button className='button-primary ' content="Check answers " />
-        </div>
-      </section>
-     </>
-       ) : ( 
+      {startGame ? (
         <section>
-        <h1>Quizzical</h1>
-        <p>Some description if needed</p>
-        <Button onClick={startQuiz} className='button-primary' content="Start quiz" />
-      </section>
-         )
-        }
+          <small>Category:</small>
+          {restructuredQuestionsArray[0].category && <h1 style={{ margin: 0 }}>{restructuredQuestionsArray[0].category}</h1>}
+          {quizItem}
+          <div className="check-info">
+            <Button className="button-primary" key={nanoid()} content="Check answers " />
+          </div>
+        </section>
+      ) : (
+        <section>
+          <h1>Quizzical</h1>
+          <p>Some description if needed</p>
+          <button onClick={startQuiz} className="button-primary">
+            Start quiz
+          </button>
+        </section>
+      )}
     </>
   );
 }
