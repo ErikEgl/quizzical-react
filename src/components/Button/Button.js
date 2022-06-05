@@ -3,7 +3,7 @@ import React from "react";
 function Button(props) {
   return (
     <>
-      <button {...props}>{props.content}</button>
+      <button onClick={props.holdAnswer ? props.holdAnswer :  props.onClick}  className={props.className}>{props.content} {props.answer}</button>
     </>
   );
 }
