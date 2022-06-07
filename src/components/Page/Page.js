@@ -77,12 +77,7 @@ function Page(props) {
 
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
-      <div key={item.id} className="quiz-item">
-        
-        {item.question && <h2 dangerouslySetInnerHTML={{ __html: item.question }} />}
-        {item.answers && <div className="quiz-answers-wrap">
-            {item.answers.map(el => {
-              return <Button onClick={(id) => holdAnswer(el.id)} className={el.isHeld === false ? "button-unselected" : "button-selected"} key={el.key} answer={el.answer} />
+      <div key={index} className="quiz-item">
             })}
         </div>}
       </div>
