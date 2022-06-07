@@ -62,14 +62,21 @@ function Page(props) {
   }
 
   function holdAnswer(id) {
-    console.log(id);
-      // setRestructuredQuestionsArray(prevArray => {
-      //   return prevArray.map(prevArrayAnswers => {
-      //       return prevArrayAnswers.answers.map(prevAnswer => {
-      //         return prevAnswer;
-      //       });
-      //   });
-      // });
+    // console.log(id);
+    console.log(restructuredQuestionsArray);
+    setRestructuredQuestionsArray((prevArray) => {
+      return prevArray.map((prevArrayAnswers) => {
+        return prevArrayAnswers.answers.map((answer) => {
+          // console.log("isHeld", answer.isHeld);
+          // console.log(
+          //   answer.id === id ? { ...answer, isHeld: !answer.isHeld } : answer
+          // );
+          return answer.id === id
+            ? { ...answer, isHeld: !answer.isHeld }
+            : answer;
+        });
+      });
+    });
   }
   
 
