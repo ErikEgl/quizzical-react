@@ -61,20 +61,18 @@ function Page(props) {
     // arr.sort(() => Math.random() - 0.5)
   }
 
-  function holdAnswer(id) {
-    // console.log(id);
-    console.log(restructuredQuestionsArray);
+  function holdAnswer(questionId, answerId) {
     setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayAnswers) => {
-        return prevArrayAnswers.answers.map((answer) => {
-          // console.log("isHeld", answer.isHeld);
-          // console.log(
-          //   answer.id === id ? { ...answer, isHeld: !answer.isHeld } : answer
-          // );
-          return answer.id === id
-            ? { ...answer, isHeld: !answer.isHeld }
+      return prevArray.map((prevArrayItems) => {
+        return prevArrayItems.id === questionId ? 
+        { ...prevArrayItems,
+         answers: prevArrayItems.answers.map((answer) => {
+           return answer.id === answerId ? 
+           { ...answer, isHeld: !answer.isHeld } 
             : answer;
-        });
+              }),
+            }
+          : prevArrayItems;
       });
     });
   }
