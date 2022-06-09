@@ -62,12 +62,25 @@ function Page(props) {
   }
 
   function holdAnswer(questionId, answerId) {
+    //set all isHeld values to false
     setRestructuredQuestionsArray((prevArray) => {
       return prevArray.map((prevArrayItems) => {
         return prevArrayItems.id === questionId ? 
         { ...prevArrayItems,
          answers: prevArrayItems.answers.map((answer) => {
+          return { ...answer, isHeld: false };
+              }),
+            }
+          : prevArrayItems;
+      });
+    });
+    //set clicked button`s isHeld value to true
     setRestructuredQuestionsArray((prevArray) => {
+      return prevArray.map((prevArrayItems) => {
+        return prevArrayItems.id === questionId ? 
+        { ...prevArrayItems,
+         answers: prevArrayItems.answers.map((answer) => {
+           return  answer.id === answerId ? 
            { ...answer, isHeld: !answer.isHeld } 
             : answer;
               }),
