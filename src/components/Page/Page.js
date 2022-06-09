@@ -28,7 +28,7 @@ function Page(props) {
             id: nanoid(),
             answer: question.correct_answer,
             isCorrect: true,
-            isHeld: true,
+            isHeld: false,
             key: nanoid(),
           },
           {
