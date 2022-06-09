@@ -55,7 +55,7 @@ function Page(props) {
         ],
       });
       setRestructuredQuestionsArray(newQuestionsArr);
-      return newQuestionsArr
+      return newQuestionsArr;
     });
     setStartGame((prevVal) => !prevVal);
     // arr.sort(() => Math.random() - 0.5)
@@ -96,22 +96,55 @@ function Page(props) {
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
       <div key={index} className="quiz-item">
+        {item.question && (
+          <h2 dangerouslySetInnerHTML={{ __html: item.question }} />
+        )}
+        {item.answers && (
+          <div className="quiz-answers-wrap">
+            {/* .sort(() => Math.random() - 0.5) shuffles answers */}
+            {item.answers.map((el) => {
+              return (
+                <Button
+                onClick={() => holdAnswer(item.id, el.id)}
+                  isHeld={el.isHeld}
+                  className={
+                    el.isHeld === false
+                      ? "button-unselected"
+                      : "button-selected"
+                  }
+                  id={
+                    el.isCorrect === true
+                      ? "correct"
+                      : ""
+                  }
+                  key={el.id}
+                  answer={el.answer}
+                />
+              );
             })}
-        </div>}
+          </div>
+        )}
       </div>
     );
   });
-  // button-unchoosed
-  // button-secondary
   return (
     <>
       {startGame ? (
         <section>
           <small>Category:</small>
-          {restructuredQuestionsArray[0].category && <h1 style={{ margin: 0 }}>{restructuredQuestionsArray[0].category}</h1>}
+          {restructuredQuestionsArray[0].category && (
+            <h1 style={{ margin: 0 }}>
+              {restructuredQuestionsArray[0].category}
+            </h1>
+          )}
           {quizItem}
           <div className="check-info">
-            <Button className="button-primary" key={nanoid()} content="Check answers " />
+            <Button
+
+              className="button-primary"
+              key={nanoid()}
+              content="Check answers "
+            />
           </div>
         </section>
       ) : (
