@@ -67,7 +67,7 @@ function Page(props) {
         return prevArrayItems.id === questionId ? 
         { ...prevArrayItems,
          answers: prevArrayItems.answers.map((answer) => {
-           return answer.id === answerId ? 
+    setRestructuredQuestionsArray((prevArray) => {
            { ...answer, isHeld: !answer.isHeld } 
             : answer;
               }),
