@@ -57,6 +57,9 @@ function Page(props) {
           },
         ],
       });
+      newQuestionsArr.map(quizItem => {
+        return quizItem.answers.sort(() => Math.random() - 0.5)
+      })
       setRestructuredQuestionsArray(newQuestionsArr);
       return newQuestionsArr;
     });
