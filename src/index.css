@@ -87,21 +87,25 @@ button.button-selected {
   color: #293264;
   background-color: #D6DBF5;
 }
+button.button-selected[disabled] {
+  opacity: 0.5;
+}
 button.button-unselected {
   color: #293264;
   border-color: #4D5B9E;
 }
+button.button-unselected[disabled] {
+  opacity: 0.5;
+}
 button.button-success {
   background-color: #94D7A2;
-  opacity: 0.5;
+}
+button.button-success[disabled] {
+  opacity: 1;
 }
 button.button-error {
   background-color: #F8BCBC;
   opacity: 0.5;
-}
-
-#correct {
-  outline: 2px solid red;
 }
 
 .blob {
