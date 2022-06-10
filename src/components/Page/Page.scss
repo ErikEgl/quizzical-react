@@ -35,4 +35,9 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include media($sm) {
+      flex-direction: row;
+    };
 }
