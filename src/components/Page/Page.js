@@ -64,7 +64,6 @@ function Page(props) {
       return newQuestionsArr;
     });
     setStartGame((prevVal) => !prevVal);
-    // arr.sort(() => Math.random() - 0.5)
   }
 
   function holdAnswer(questionId, answerId) {
