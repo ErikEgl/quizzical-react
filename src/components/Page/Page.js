@@ -8,7 +8,8 @@ function Page(props) {
   const [restructuredQuestionsArray, setRestructuredQuestionsArray] = React.useState([]);
   const [startGame, setStartGame] = React.useState(false);
 
-  const API_URL = "https://opentdb.com/api.php?amount=10&type=multiple"
+  const [correctAnswersCounter, setCorrectAnswersCounter] = React.useState(0);
+  const [gameEnd, setGameEnd] = React.useState(false);
 
   React.useEffect(() => {
     fetch(API_URL)
@@ -17,6 +18,8 @@ function Page(props) {
   }, []);
 
   function startQuiz() {
+    setGameEnd(false)
+    setCorrectAnswersCounter(0)
     const newQuestionsArr = [];
     fetchedQuestions.map((question) => {
       newQuestionsArr.push({
@@ -91,6 +94,17 @@ function Page(props) {
   }
   
 
+function countCorrectAnswers() {
+  restructuredQuestionsArray.map(quizItem => {
+    return quizItem.answers.map(answer => {
+      if(answer.isCorrect && answer.isHeld) {
+        setCorrectAnswersCounter(prevCount => prevCount + +(answer.isCorrect && answer.isHeld))
+      }
+      return answer
+    })
+  })
+  return setGameEnd(true)
+}
 
 
   const quizItem = restructuredQuestionsArray.map((item, index) => {
@@ -139,11 +153,12 @@ function Page(props) {
           )}
           {quizItem}
           <div className="check-info">
+              {gameEnd && `You scored ${correctAnswersCounter}/${restructuredQuestionsArray.length} correct answers`}
             <Button
-
+              onClick={gameEnd ? startQuiz : countCorrectAnswers}
               className="button-primary"
               key={nanoid()}
-              content="Check answers "
+              content={gameEnd ? "Start quiz again" : "Check answers"}
             />
           </div>
         </section>
