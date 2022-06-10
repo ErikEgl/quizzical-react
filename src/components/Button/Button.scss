@@ -24,14 +24,22 @@ button {
   &.button-selected {
     color: $dark-2;
     background-color: $light-2;
+    &[disabled] {
+      opacity: $btn-opacity;
+    }
   }
   &.button-unselected {
     color: $dark-2;
     border-color: $dark-1;
+    &[disabled] {
+      opacity: $btn-opacity;
+    }
   } 
   &.button-success {
     background-color: $success-1;
-    opacity: $btn-opacity;
+    &[disabled] {
+      opacity: 1;
+    }
   }
   &.button-error {
     background-color: $error-1;
