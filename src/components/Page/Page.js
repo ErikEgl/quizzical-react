@@ -128,6 +128,7 @@ function countCorrectAnswers() {
                       ? "button-unselected"
                       : "button-selected"
                   }
+                  disabled={gameEnd && !el.isCorrect}
                   id={
                     el.isCorrect === true
                       ? "correct"
