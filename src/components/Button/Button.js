@@ -6,7 +6,7 @@ function Button(props) {
     <>
       <button disabled={props.disabled} id={props.id} onClick={props.holdAnswer ? props.holdAnswer :  props.onClick}  className={props.className}>
           {props.content} 
-          {parser.parseFromString(`<!doctype html><body> ${props.answer}`, 'text/html').body.textContent}
+          {props.answer && parser.parseFromString(`<!doctype html><body> ${props.answer}`, 'text/html').body.textContent}
       </button>
     </>
   );
