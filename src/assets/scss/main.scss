@@ -23,13 +23,16 @@ svg {
     z-index: 1;
 }
 h1 {
-    font-size: 41px;
+    font-size: 1.375rem;
+    @include media($sm) {
+        font-size: 2.5625rem;
+    };
 }
 h2 {
-    font-size: 19px;
+    font-size: 1.1875rem;
 }
 button {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .d-flex {
     display: flex;
