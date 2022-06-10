@@ -117,18 +117,13 @@ function countCorrectAnswers() {
         )}
         {item.answers && (
           <div className="quiz-answers-wrap">
-            {/* .sort(() => Math.random() - 0.5) shuffles answers */}
             {item.answers.map((el) => {
               return (
                 <Button
                 onClick={() => holdAnswer(item.id, el.id)}
                   isHeld={el.isHeld}
-                  className={
-                    el.isHeld === false
-                      ? "button-unselected"
-                      : "button-selected"
-                  }
-                  disabled={gameEnd && !el.isCorrect}
+                  className= {`${!el.isHeld ? "button-unselected" : "button-selected"} ${ gameEnd && el.isHeld && el.isCorrect ? "button-success" : ""} ${ gameEnd && el.isHeld && !el.isCorrect? "button-error" : ""}`}  
+                  disabled={gameEnd}
                   id={
                     el.isCorrect === true
                       ? "correct"
@@ -136,6 +131,7 @@ function countCorrectAnswers() {
                   }
                   key={el.id}
                   answer={el.answer}
+                  
                 />
               );
             })}
