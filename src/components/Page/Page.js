@@ -3,13 +3,43 @@ import Button from "../Button/Button";
 import React from "react";
 import { nanoid } from "nanoid";
 
+
+//TODO: hints
+//TODO: choose more quiz options
+//TODO: don`t let check answers before all is choosed
+
 function Page(props) {
-  const [fetchedQuestions, setFetchedQuestions] = React.useState([]);
+  // const [fetchedQuestions, setFetchedQuestions] = React.useState([
+  //   {
+  //     category: "Entertainment: Music",
+  //     correct_answer: "Eddie Vedder",
+  //     difficulty: "easy",
+  //     incorrect_answers: ["Cuba", "Jamaica&lrm;", "Dominica"],
+  //     question: "Who is the lead singer of Pearl Jam?",
+  //     type: "multiple",
+  //   },
+  //   {
+  //     category: "Entertainment: Music",
+  //     correct_answer: "Eddie Vedder",
+  //     difficulty: "easy",
+  //     incorrect_answers: ["Ozzy Osbourne", "Stone Gossard", "Kurt Cobain"],
+  //     question: "Who is the lead singer of Pearl Jam?",
+  //     type: "multiple",
+  //   },
+  // ]);
+
+
+  const [fetchedQuestions, setFetchedQuestions] = React.useState([])
+
   const [restructuredQuestionsArray, setRestructuredQuestionsArray] = React.useState([]);
   const [startGame, setStartGame] = React.useState(false);
 
   const [correctAnswersCounter, setCorrectAnswersCounter] = React.useState(0);
   const [gameEnd, setGameEnd] = React.useState(false);
+  
+
+
+  const API_URL = "https://opentdb.com/api.php?amount=10&type=multiple";
 
   React.useEffect(() => {
     fetch(API_URL)
