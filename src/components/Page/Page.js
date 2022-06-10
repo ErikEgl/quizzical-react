@@ -65,7 +65,7 @@ function Page(props) {
   }
 
   function holdAnswer(questionId, answerId) {
-    //set all isHeld values to false
+    //set all isHeld values to false, to eliminate a possibility to choose 2 answers simultaneously
     setRestructuredQuestionsArray((prevArray) => {
       return prevArray.map((prevArrayItems) => {
         return prevArrayItems.id === questionId ? 
