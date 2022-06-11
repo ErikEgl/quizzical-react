@@ -45,7 +45,7 @@ function Page(props) {
     fetch(API_URL)
       .then((response) => response.json())
       .then((data) => setFetchedQuestions(data.results));
-  }, []);
+  }, [gameEnd]);
 
   function startQuiz() {
     setGameEnd(false)
@@ -102,7 +102,7 @@ function Page(props) {
       return prevArray.map((prevArrayItems) => {
         return prevArrayItems.id === questionId ? 
         { ...prevArrayItems,
-         answers: prevArrayItems.answers.map((answer) => {
+        answers: prevArrayItems.answers.map((answer) => {
           return { ...answer, isHeld: false };
               }),
             }
@@ -117,14 +117,14 @@ function Page(props) {
          answers: prevArrayItems.answers.map((answer) => {
            return  answer.id === answerId ? 
            { ...answer, isHeld: !answer.isHeld } 
-            : answer;
+           : answer;
               }),
             }
           : prevArrayItems;
       });
     });
   }
-  
+
 
 function countCorrectAnswers() {
   restructuredQuestionsArray.map(quizItem => {
