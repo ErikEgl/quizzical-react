@@ -210,8 +210,8 @@ button.button-error {
   bottom: 57px;
   left: -29px;
   z-index: -1;
-  border-radius: 50%;
-  background-color: #d7ffd1;
+  border-radius: 34% 59% 56% 29%/55% 24% 43% 30%;
+  background-color: rgba(158, 217, 150, 0.5);
 }
 
 .level-medium {
@@ -225,8 +225,8 @@ button.button-error {
   bottom: 57px;
   left: -29px;
   z-index: -1;
-  border-radius: 50%;
-  background-color: #f8f4af;
+  border-radius: 34% 59% 56% 29%/55% 24% 43% 30%;
+  background-color: rgba(248, 244, 175, 0.5);
 }
 
 .level-hard {
@@ -240,8 +240,8 @@ button.button-error {
   bottom: 57px;
   left: -29px;
   z-index: -1;
-  border-radius: 50%;
-  background-color: #f19090;
+  border-radius: 34% 59% 56% 29%/55% 24% 43% 30%;
+  background-color: rgba(241, 144, 144, 0.5);
 }
 
 /*# sourceMappingURL=index.css.map */

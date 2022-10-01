@@ -42,10 +42,11 @@
   }
 }
 
+
 $levels: (
-  "easy": #d7ffd1,
-  "medium": #f8f4af,
-  "hard": #f19090,
+  "easy": rgb(158 217 150 / 50%),
+  "medium": rgb(248 244 175 / 50%),
+  "hard": rgb(241 144 144 / 50%),
 );
 
 @each $name, $color in $levels {
@@ -59,7 +60,7 @@ $levels: (
       bottom: 57px;
       left: -29px;
       z-index: -1;
-      border-radius: 50%;
+      border-radius: 34% 59% 56% 29% / 55% 24% 43% 30% ;
       background-color: $color;
     }
   }
