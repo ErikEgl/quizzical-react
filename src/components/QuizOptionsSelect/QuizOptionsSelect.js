@@ -2,8 +2,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
 import quizOptionsData from "./quizOptionsData";
 function QuizOptionsSelect(props) {
-  const { gameEnd, setFetchedQuestions, formData, setFormData } =
-    useContext(UserContext);
+  const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed } = useContext(UserContext);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -18,13 +17,16 @@ function QuizOptionsSelect(props) {
   const API_CATEGORY = formData.triviaCategory === "any" ? "" : `&category=${formData.triviaCategory}`
   const API_DIFFICULTY = formData.triviaDifficulty === "any" ? "" :  `&difficulty=${formData.triviaDifficulty}`;
   const API_URL = `https://opentdb.com/api.php?amount=${formData.triviaAmount}${API_CATEGORY}${API_DIFFICULTY}&type=multiple`;
-  console.log(API_URL);
   useEffect(() => {
     fetch(API_URL)
-      .then((response) => response.json())
+      .then((response) => {
+        if(!response.ok) {
+          return setIsFetchFailed(prevState => !prevState)
+        }           
+        return response.json()
+      })
       .then((data) => setFetchedQuestions(data.results));
   }, [formData, gameEnd]);
-
   const quizOptionsDataItems = quizOptionsData.options.map((item) => {
     return (
       <option key={item.value} value={item.value}>

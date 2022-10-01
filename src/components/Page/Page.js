@@ -48,15 +48,28 @@ function Page(props) {
     <>
       {startGame ? (
         <section>
+          {isFetchFailed ? (
+            <>
+              <h2>Oops, something went wrong</h2>
+              <Button
+                onClick={startQuiz}
+                className="button-primary"
+                key={nanoid()}
+                content={"Start quiz again"}
+              />
+            </>
+          ) : (
+            <>
           <small>Category:</small>
-          {restructuredQuestionsArray[0].category && (
+              {restructuredQuestionsArray[0]?.category && (
             <h1 style={{ margin: 0 }}>
-              {restructuredQuestionsArray[0].category}
+                  {restructuredQuestionsArray[0]?.category}
             </h1>
           )}
           {quizItem}
           <div className="check-info">
-              {gameEnd && `You scored ${correctAnswersCounter}/${restructuredQuestionsArray.length} correct answers`}
+                {gameEnd &&
+                  `You scored ${correctAnswersCounter}/${restructuredQuestionsArray.length} correct answers`}
             <Button
               onClick={gameEnd ? startQuiz : countCorrectAnswers}
               className="button-primary"
@@ -64,6 +77,8 @@ function Page(props) {
               content={gameEnd ? "Start quiz again" : "Check answers"}
             />
           </div>
+            </>
+          )}
         </section>
       ) : (
         <section>
