@@ -1,17 +1,25 @@
 import Button from "../Button/Button";
 import QuizOptionsSelect from "../QuizOptionsSelect/QuizOptionsSelect";
 import { nanoid } from "nanoid";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 
-//TODO: hints
-//TODO: handel fetch errors
-//TODO: choose more quiz options
+//TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points)
+//TODO: handle fetch errors
 //TODO: don`t let check answers before all is choosed
-//
+//TODO: add difficulty label
 
 function Page(props) {
-  const { restructuredQuestionsArray, holdAnswer, gameEnd, startGame, correctAnswersCounter, startQuiz, countCorrectAnswers } = useContext(UserContext);
+  const {
+    restructuredQuestionsArray,
+    holdAnswer,
+    gameEnd,
+    startGame,
+    correctAnswersCounter,
+    startQuiz,
+    countCorrectAnswers,
+    isFetchFailed,
+  } = useContext(UserContext);
 
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
@@ -24,18 +32,19 @@ function Page(props) {
             {item.answers.map((el) => {
               return (
                 <Button
-                onClick={() => holdAnswer(item.id, el.id)}
+                  onClick={() => holdAnswer(item.id, el.id)}
                   isHeld={el.isHeld}
-                  className= {`${!el.isHeld ? "button-unselected" : "button-selected"} ${ gameEnd && el.isHeld && el.isCorrect ? "button-success" : ""} ${ gameEnd && el.isHeld && !el.isCorrect? "button-error" : ""}`}  
+                  className={`${
+                    !el.isHeld ? "button-unselected" : "button-selected"
+                  } ${
+                    gameEnd && el.isHeld && el.isCorrect ? "button-success" : ""
+                  } ${
+                    gameEnd && el.isHeld && !el.isCorrect ? "button-error" : ""
+                  }`}
                   disabled={gameEnd}
-                  id={
-                    el.isCorrect === true
-                      ? "correct"
-                      : ""
-                  }
+                  id={el.isCorrect === true ? "correct" : ""}
                   key={el.id}
                   answer={el.answer}
-                  
                 />
               );
             })}
@@ -60,30 +69,30 @@ function Page(props) {
             </>
           ) : (
             <>
-          <small>Category:</small>
+              <small>Category:</small>
               {restructuredQuestionsArray[0]?.category && (
-            <h1 style={{ margin: 0 }}>
+                <h1 style={{ margin: 0 }}>
                   {restructuredQuestionsArray[0]?.category}
-            </h1>
-          )}
-          {quizItem}
-          <div className="check-info">
+                </h1>
+              )}
+              {quizItem}
+              <div className="check-info">
                 {gameEnd &&
                   `You scored ${correctAnswersCounter}/${restructuredQuestionsArray.length} correct answers`}
-            <Button
-              onClick={gameEnd ? startQuiz : countCorrectAnswers}
-              className="button-primary"
-              key={nanoid()}
-              content={gameEnd ? "Start quiz again" : "Check answers"}
-            />
-          </div>
+                <Button
+                  onClick={gameEnd ? startQuiz : countCorrectAnswers}
+                  className="button-primary"
+                  key={nanoid()}
+                  content={gameEnd ? "Start quiz again" : "Check answers"}
+                />
+              </div>
             </>
           )}
         </section>
       ) : (
         <section>
           <h1>Quizzical</h1>
-          <QuizOptionsSelect/>
+          <QuizOptionsSelect />
           <button onClick={startQuiz} className="button-primary">
             Start quiz
           </button>
