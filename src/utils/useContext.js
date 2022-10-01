@@ -8,14 +8,11 @@ function AppContextProvider(props) {
   
     const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
     const [gameEnd, setGameEnd] = useState(false);
-    const [fetchedQuestions, setFetchedQuestions] = useState([])
-    
-
-
+  const [fetchedQuestions, setFetchedQuestions] = useState([]);
 
     function startQuiz() {
-        setGameEnd(false)
-        setCorrectAnswersCounter(0)
+    setGameEnd(false);
+    setCorrectAnswersCounter(0);
         const newQuestionsArr = [];
         fetchedQuestions.map((question) => {
           newQuestionsArr.push({
@@ -53,22 +50,22 @@ function AppContextProvider(props) {
               },
             ],
           });
-          newQuestionsArr.map(quizItem => {
-            return quizItem.answers.sort(() => Math.random() - 0.5)
-          })
+      newQuestionsArr.map((quizItem) => {
+        return quizItem.answers.sort(() => Math.random() - 0.5);
+      });
           setRestructuredQuestionsArray(newQuestionsArr);
           return newQuestionsArr;
         });
         setStartGame((prevVal) => !prevVal);
       }
 
-
       function holdAnswer(questionId, answerId) {
         //set all isHeld values to false, to eliminate a possibility to choose 2 answers simultaneously
         setRestructuredQuestionsArray((prevArray) => {
           return prevArray.map((prevArrayItems) => {
-            return prevArrayItems.id === questionId ? 
-            { ...prevArrayItems,
+        return prevArrayItems.id === questionId
+          ? {
+              ...prevArrayItems,
             answers: prevArrayItems.answers.map((answer) => {
               return { ...answer, isHeld: false };
                   }),
@@ -79,11 +76,12 @@ function AppContextProvider(props) {
         //set clicked button`s isHeld value to true
         setRestructuredQuestionsArray((prevArray) => {
           return prevArray.map((prevArrayItems) => {
-            return prevArrayItems.id === questionId ? 
-            { ...prevArrayItems,
+        return prevArrayItems.id === questionId
+          ? {
+              ...prevArrayItems,
              answers: prevArrayItems.answers.map((answer) => {
-               return  answer.id === answerId ? 
-               { ...answer, isHeld: !answer.isHeld } 
+                return answer.id === answerId
+                  ? { ...answer, isHeld: !answer.isHeld }
                : answer;
                   }),
                 }
@@ -93,28 +91,39 @@ function AppContextProvider(props) {
       }
 
       function countCorrectAnswers() {
-        restructuredQuestionsArray.map(quizItem => {
-          return quizItem.answers.map(answer => {
-            if(answer.isCorrect && answer.isHeld) {
-              setCorrectAnswersCounter(prevCount => prevCount + +(answer.isCorrect && answer.isHeld))
+    restructuredQuestionsArray.map((quizItem) => {
+      return quizItem.answers.map((answer) => {
+        if (answer.isCorrect && answer.isHeld) {
+          setCorrectAnswersCounter(
+            (prevCount) => prevCount + +(answer.isCorrect && answer.isHeld)
+          );
             }
-            return answer
-          })
-        })
-        return setGameEnd(true)
+        return answer;
+      });
+    });
+    return setGameEnd(true);
       }
 
-      const [formData, setFormData] = useState(
-        {
+  const [formData, setFormData] = useState({
           triviaAmount: "5",
           triviaDifficulty: "any",
-          triviaCategory: "any"
-        }
-      )
+    triviaCategory: "any",
+  });
 
   return (
     <UserContext.Provider
-      value={{ restructuredQuestionsArray, holdAnswer, gameEnd, startGame, correctAnswersCounter, startQuiz, countCorrectAnswers, setFetchedQuestions, formData, setFormData  }}
+      value={{
+        restructuredQuestionsArray,
+        holdAnswer,
+        gameEnd,
+        startGame,
+        correctAnswersCounter,
+        startQuiz,
+        countCorrectAnswers,
+        setFetchedQuestions,
+        formData,
+        setFormData,
+      }}
     >
       {props.children}
     </UserContext.Provider>
