@@ -1,143 +1,17 @@
 import Button from "../Button/Button";
-// import Question from "../Question/Question";
-import React from "react";
+import QuizOptionsSelect from "../QuizOptionsSelect/QuizOptionsSelect";
 import { nanoid } from "nanoid";
-
+import React, {useContext} from "react";
+import { UserContext } from "../../utils/useContext";
 
 //TODO: hints
+//TODO: handel fetch errors
 //TODO: choose more quiz options
 //TODO: don`t let check answers before all is choosed
+//
 
 function Page(props) {
-  // const [fetchedQuestions, setFetchedQuestions] = React.useState([
-  //   {
-  //     category: "Entertainment: Music",
-  //     correct_answer: "Eddie Vedder",
-  //     difficulty: "easy",
-  //     incorrect_answers: ["Cuba", "Jamaica&lrm;", "Dominica"],
-  //     question: "Who is the lead singer of Pearl Jam?",
-  //     type: "multiple",
-  //   },
-  //   {
-  //     category: "Entertainment: Music",
-  //     correct_answer: "Eddie Vedder",
-  //     difficulty: "easy",
-  //     incorrect_answers: ["Ozzy Osbourne", "Stone Gossard", "Kurt Cobain"],
-  //     question: "Who is the lead singer of Pearl Jam?",
-  //     type: "multiple",
-  //   },
-  // ]);
-
-
-  const [fetchedQuestions, setFetchedQuestions] = React.useState([])
-
-  const [restructuredQuestionsArray, setRestructuredQuestionsArray] = React.useState([]);
-  const [startGame, setStartGame] = React.useState(false);
-
-  const [correctAnswersCounter, setCorrectAnswersCounter] = React.useState(0);
-  const [gameEnd, setGameEnd] = React.useState(false);
-  
-
-
-  const API_URL = "https://opentdb.com/api.php?amount=10&type=multiple";
-
-  React.useEffect(() => {
-    fetch(API_URL)
-      .then((response) => response.json())
-      .then((data) => setFetchedQuestions(data.results));
-  }, [gameEnd]);
-
-  function startQuiz() {
-    setGameEnd(false)
-    setCorrectAnswersCounter(0)
-    const newQuestionsArr = [];
-    fetchedQuestions.map((question) => {
-      newQuestionsArr.push({
-        category: question.category,
-        id: nanoid(),
-        question: question.question,
-        answers: [
-          {
-            id: nanoid(),
-            answer: question.correct_answer,
-            isCorrect: true,
-            isHeld: false,
-            key: nanoid(),
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[0],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[1],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[2],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-          },
-        ],
-      });
-      newQuestionsArr.map(quizItem => {
-        return quizItem.answers.sort(() => Math.random() - 0.5)
-      })
-      setRestructuredQuestionsArray(newQuestionsArr);
-      return newQuestionsArr;
-    });
-    setStartGame((prevVal) => !prevVal);
-  }
-
-  function holdAnswer(questionId, answerId) {
-    //set all isHeld values to false, to eliminate a possibility to choose 2 answers simultaneously
-    setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayItems) => {
-        return prevArrayItems.id === questionId ? 
-        { ...prevArrayItems,
-        answers: prevArrayItems.answers.map((answer) => {
-          return { ...answer, isHeld: false };
-              }),
-            }
-          : prevArrayItems;
-      });
-    });
-    //set clicked button`s isHeld value to true
-    setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayItems) => {
-        return prevArrayItems.id === questionId ? 
-        { ...prevArrayItems,
-         answers: prevArrayItems.answers.map((answer) => {
-           return  answer.id === answerId ? 
-           { ...answer, isHeld: !answer.isHeld } 
-           : answer;
-              }),
-            }
-          : prevArrayItems;
-      });
-    });
-  }
-
-
-function countCorrectAnswers() {
-  restructuredQuestionsArray.map(quizItem => {
-    return quizItem.answers.map(answer => {
-      if(answer.isCorrect && answer.isHeld) {
-        setCorrectAnswersCounter(prevCount => prevCount + +(answer.isCorrect && answer.isHeld))
-      }
-      return answer
-    })
-  })
-  return setGameEnd(true)
-}
-
+  const { restructuredQuestionsArray, holdAnswer, gameEnd, startGame, correctAnswersCounter, startQuiz, countCorrectAnswers } = useContext(UserContext);
 
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
@@ -194,7 +68,7 @@ function countCorrectAnswers() {
       ) : (
         <section>
           <h1>Quizzical</h1>
-          <p>Some description if needed</p>
+          <QuizOptionsSelect/>
           <button onClick={startQuiz} className="button-primary">
             Start quiz
           </button>
