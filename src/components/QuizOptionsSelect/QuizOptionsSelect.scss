@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  select,
+  input {
+    border-radius: 10px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 1rem 3.75rem 1rem 1rem;
+    color: black;
+    border: 1px solid currentColor;
+  }
+  span {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    input {
+      padding: 0.3rem;
+    }
+  }
+}
