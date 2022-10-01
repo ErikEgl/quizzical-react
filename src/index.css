@@ -60,6 +60,38 @@ button {
   display: flex;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+form select,
+form input {
+  border-radius: 10px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 1rem 3.75rem 1rem 1rem;
+  color: black;
+  border: 1px solid currentColor;
+}
+form span {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+}
+form span input {
+  padding: 0.3rem;
+}
+
 button {
   border-radius: 10px;
   font-weight: 500;
