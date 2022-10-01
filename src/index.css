@@ -199,4 +199,49 @@ button.button-error {
   }
 }
 
+.level-easy {
+  position: relative;
+}
+.level-easy:after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  bottom: 57px;
+  left: -29px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #d7ffd1;
+}
+
+.level-medium {
+  position: relative;
+}
+.level-medium:after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  bottom: 57px;
+  left: -29px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #f8f4af;
+}
+
+.level-hard {
+  position: relative;
+}
+.level-hard:after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  bottom: 57px;
+  left: -29px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #f19090;
+}
+
 /*# sourceMappingURL=index.css.map */

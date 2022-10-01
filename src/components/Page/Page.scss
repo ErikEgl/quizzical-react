@@ -1,6 +1,6 @@
 .quiz-item {
-    padding-block: 25px;
-    border-bottom: 1px solid $light-2;
+  padding-block: 25px;
+  border-bottom: 1px solid $light-2;
 }
 
 
@@ -31,13 +31,36 @@
 
 
 .check-info {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    @include media($sm) {
-      flex-direction: row;
-    };
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @include media($sm) {
+    flex-direction: row;
+  }
+}
+
+$levels: (
+  "easy": #d7ffd1,
+  "medium": #f8f4af,
+  "hard": #f19090,
+);
+
+@each $name, $color in $levels {
+  .level-#{$name} {
+    position: relative;
+    &:after {
+      position: absolute;
+      content: "";
+      width: 50px;
+      height: 50px;
+      bottom: 57px;
+      left: -29px;
+      z-index: -1;
+      border-radius: 50%;
+      background-color: $color;
+    }
+  }
 }
