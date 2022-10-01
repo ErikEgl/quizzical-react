@@ -10,7 +10,7 @@ function AppContextProvider(props) {
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
   const [fetchedQuestions, setFetchedQuestions] = useState([]);
-
+  
   function startQuiz() {
     setGameEnd(false);
     setCorrectAnswersCounter(0);
@@ -27,6 +27,7 @@ function AppContextProvider(props) {
             isCorrect: true,
             isHeld: false,
             key: nanoid(),
+            difficulty: question.difficulty,
           },
           {
             id: nanoid(),
@@ -34,6 +35,7 @@ function AppContextProvider(props) {
             isCorrect: false,
             isHeld: false,
             key: nanoid(),
+            difficulty: question.difficulty,
           },
           {
             id: nanoid(),
@@ -41,6 +43,7 @@ function AppContextProvider(props) {
             isCorrect: false,
             isHeld: false,
             key: nanoid(),
+            difficulty: question.difficulty,
           },
           {
             id: nanoid(),
@@ -48,6 +51,7 @@ function AppContextProvider(props) {
             isCorrect: false,
             isHeld: false,
             key: nanoid(),
+            difficulty: question.difficulty,
           },
         ],
       });

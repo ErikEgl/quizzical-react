@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
 import quizOptionsData from "./quizOptionsData";
+import quizDifficultyData from "./quizDifficultyData";
 function QuizOptionsSelect(props) {
   const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed } = useContext(UserContext);
 
@@ -31,6 +32,13 @@ function QuizOptionsSelect(props) {
     return (
       <option key={item.value} value={item.value}>
         {item.title}
+      </option>
+    );
+  });
+  const quizDifficultyDataItems = quizDifficultyData.options.map((item) => {
+    return (
+      <option key={item.level} value={item.level}>
+        {item.levelTitle}
       </option>
     );
   });
@@ -70,10 +78,7 @@ function QuizOptionsSelect(props) {
             value={formData.triviaDifficulty}
             onChange={handleChange}
           >
-            <option value="any">Any Difficulty</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            {quizDifficultyDataItems}
           </select>
         </div>
       </form>

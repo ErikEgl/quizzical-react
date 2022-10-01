@@ -4,10 +4,9 @@ import { nanoid } from "nanoid";
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 
-//TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points)
-//TODO: handle fetch errors
+//TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
+
 //TODO: don`t let check answers before all is choosed
-//TODO: add difficulty label
 
 function Page(props) {
   const {
@@ -19,11 +18,12 @@ function Page(props) {
     startQuiz,
     countCorrectAnswers,
     isFetchFailed,
+    formData,
   } = useContext(UserContext);
 
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
-      <div key={index} className="quiz-item">
+      <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
         {item.question && (
           <h2 dangerouslySetInnerHTML={{ __html: item.question }} />
         )}
@@ -75,6 +75,7 @@ function Page(props) {
                   {restructuredQuestionsArray[0]?.category}
                 </h1>
               )}
+              <small>Difficulty level: { formData.triviaDifficulty }</small>
               {quizItem}
               <div className="check-info">
                 {gameEnd &&
