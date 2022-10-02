@@ -72,7 +72,7 @@ function Page(props) {
               <small>Category:</small>
               {restructuredQuestionsArray[0]?.category && (
                 <h1 style={{ margin: 0 }}>
-                  {restructuredQuestionsArray[0]?.category}
+                  {formData.triviaCategory === "any" ? "Mixed categories" : restructuredQuestionsArray[0]?.category}
                 </h1>
               )}
               <small>Difficulty level: { formData.triviaDifficulty }</small>
