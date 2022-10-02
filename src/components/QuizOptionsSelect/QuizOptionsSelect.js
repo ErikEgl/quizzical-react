@@ -3,7 +3,7 @@ import { UserContext } from "../../utils/useContext";
 import quizOptionsData from "./quizOptionsData";
 import quizDifficultyData from "./quizDifficultyData";
 function QuizOptionsSelect(props) {
-  const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed } = useContext(UserContext);
+  const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed, setIsFetchLoading, isFetchLoading } = useContext(UserContext);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -19,14 +19,16 @@ function QuizOptionsSelect(props) {
   const API_DIFFICULTY = formData.triviaDifficulty === "any" ? "" :  `&difficulty=${formData.triviaDifficulty}`;
   const API_URL = `https://opentdb.com/api.php?amount=${formData.triviaAmount}${API_CATEGORY}${API_DIFFICULTY}&type=multiple`;
   useEffect(() => {
+    setIsFetchLoading(true)
     fetch(API_URL)
-      .then((response) => {
-        if(!response.ok) {
-          return setIsFetchFailed(prevState => !prevState)
-        }           
-        return response.json()
-      })
-      .then((data) => setFetchedQuestions(data.results));
+    .then(response => response.json())
+    .then((data) => {
+      return (
+        setIsFetchLoading(false),
+        setFetchedQuestions(data.results)
+      )
+    }
+    );
   }, [formData, gameEnd]);
   const quizOptionsDataItems = quizOptionsData.options.map((item) => {
     return (

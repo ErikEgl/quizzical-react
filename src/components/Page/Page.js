@@ -19,8 +19,8 @@ function Page(props) {
     countCorrectAnswers,
     isFetchFailed,
     formData,
+    isFetchLoading
   } = useContext(UserContext);
-
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
       <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
@@ -94,8 +94,8 @@ function Page(props) {
         <section>
           <h1>Quizzical</h1>
           <QuizOptionsSelect />
-          <button onClick={startQuiz} className="button-primary">
-            Start quiz
+          <button onClick={startQuiz} className="button-primary start-btn" disabled={isFetchLoading}>
+            Start quiz {<div className="spinner-dual-ring"></div>}
           </button>
         </section>
       )}

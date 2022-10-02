@@ -6,6 +6,7 @@ function AppContextProvider(props) {
   const [restructuredQuestionsArray, setRestructuredQuestionsArray] = useState([]);
   const [startGame, setStartGame] = useState(false);
   const [isFetchFailed, setIsFetchFailed] = useState(false);
+  const [isFetchLoading, setIsFetchLoading] = useState(false);
 
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
@@ -129,7 +130,9 @@ function AppContextProvider(props) {
         formData,
         setFormData,
         isFetchFailed,
-        setIsFetchFailed
+        setIsFetchFailed,
+        isFetchLoading,
+        setIsFetchLoading
       }}
     >
       {props.children}

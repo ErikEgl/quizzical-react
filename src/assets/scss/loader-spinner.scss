@@ -1,0 +1,33 @@
+button.start-btn[disabled] {
+  background-color: gray !important;
+  position: relative;
+  pointer-events: none;
+  .spinner-dual-ring {
+    position: absolute;
+    right: 31px;
+    top: 13%;
+    display: block;
+    width: 24px;
+    height: 24px;
+    &:after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: spinner-dual-ring 1.2s linear infinite;
+    }
+  }
+}
+
+@keyframes spinner-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
