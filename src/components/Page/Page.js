@@ -6,6 +6,8 @@ import { UserContext } from "../../utils/useContext";
 
 //TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
 
+//TODO: add login to save points
+//TODO: add category info to all questions if any
 //TODO: don`t let check answers before all is choosed
 
 function Page(props) {
