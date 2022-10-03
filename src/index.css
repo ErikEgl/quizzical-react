@@ -336,5 +336,11 @@ button.button-error {
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
+.points-counter {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  z-index: 2;
+}
 
 /*# sourceMappingURL=index.css.map */
