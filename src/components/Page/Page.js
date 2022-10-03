@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 import Hint from "../Hint/Hint";
-//TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
+//TODO: hints (like in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
 
 //TODO: add login to save points
 //TODO: add category info to all questions if any
