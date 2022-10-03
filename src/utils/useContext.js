@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { nanoid } from "nanoid";
 const UserContext = createContext();
 
@@ -7,8 +7,8 @@ function AppContextProvider(props) {
   const [startGame, setStartGame] = useState(false);
   const [isFetchFailed, setIsFetchFailed] = useState(false);
   const [isFetchLoading, setIsFetchLoading] = useState(false);
-  const [showHint, setShowHint] = useState(false);
-
+  const [showUserErrorMessage, setShowUserErrorMessage] = useState(false);
+  
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
   const [fetchedQuestions, setFetchedQuestions] = useState([]);
@@ -118,18 +118,28 @@ function AppContextProvider(props) {
     triviaCategory: "any",
   });
 
+
+  const [gamePossessionsData, setGamePossessionsData] = useState({
+    gems: 50,
+  });
+
+
+  useEffect(() => {
+    if(!!localStorage.getItem("gemsCounter")) setGamePossessionsData({gems: localStorage.getItem("gemsCounter")})
+  }, [])
+  useEffect(() => {
+    localStorage.setItem("gemsCounter", gamePossessionsData.gems)
+  }, [gamePossessionsData])
+
   function hintHandleClick (questionId) {
-    setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayItems) => {
-        return prevArrayItems.id === questionId
-          ? {
-              ...prevArrayItems,
-              showHint: !prevArrayItems.showHint,
-            }
-          : prevArrayItems;
-      });
-    });
-    setTimeout(() => {
+    if(gamePossessionsData.gems >= 10) {
+      setGamePossessionsData(prevData => {
+        return ({
+            ...prevData,
+            gems: (prevData.gems -10),
+          }
+        )
+      })
       setRestructuredQuestionsArray((prevArray) => {
         return prevArray.map((prevArrayItems) => {
           return prevArrayItems.id === questionId
@@ -140,8 +150,23 @@ function AppContextProvider(props) {
             : prevArrayItems;
         });
       });
-    }, 3000)
-
+      setTimeout(() => {
+        setRestructuredQuestionsArray((prevArray) => {
+          return prevArray.map((prevArrayItems) => {
+            return prevArrayItems.id === questionId
+              ? {
+                  ...prevArrayItems,
+                  showHint: !prevArrayItems.showHint,
+                }
+              : prevArrayItems;
+          });
+        });
+      }, 3000)
+    } 
+  }
+  function errorMessageHandleClick(questionId) {
+    console.log(questionId);
+    setShowUserErrorMessage(prevMessage => !prevMessage)
   }
 
   return (
@@ -161,7 +186,12 @@ function AppContextProvider(props) {
         setIsFetchFailed,
         isFetchLoading,
         setIsFetchLoading,
-        hintHandleClick
+        hintHandleClick,
+        setGamePossessionsData,
+        gamePossessionsData,
+        showUserErrorMessage,
+        setShowUserErrorMessage,
+        errorMessageHandleClick
       }}
     >
       {props.children}
