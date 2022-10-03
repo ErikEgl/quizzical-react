@@ -3,7 +3,7 @@ import QuizOptionsSelect from "../QuizOptionsSelect/QuizOptionsSelect";
 import { nanoid } from "nanoid";
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
-import Hints from "../Hint/Hint";
+import Hint from "../Hint/Hint";
 //TODO: hints (line in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
 
 //TODO: add login to save points
@@ -25,8 +25,8 @@ function Page(props) {
   } = useContext(UserContext);
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
-      <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
-        {/* <Hints/> */}
+      <div key={index} className={`quiz-item ${item.showHint} level-${item.answers[0].difficulty}`}>
+        <Hint isDisabled={item.showHint} questionId={item.id}/>
         {item.question && (
           <h2 dangerouslySetInnerHTML={{ __html: item.question }} />
         )}
@@ -43,6 +43,8 @@ function Page(props) {
                     gameEnd && el.isHeld && el.isCorrect ? "button-success" : ""
                   } ${
                     gameEnd && el.isHeld && !el.isCorrect ? "button-error" : ""
+                  } ${
+                    item.showHint && el.isCorrect ? "showHint" : ""
                   }`}
                   disabled={gameEnd}
                   id={el.isCorrect === true ? "correct" : ""}

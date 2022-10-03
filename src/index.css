@@ -292,11 +292,49 @@ button.button-error {
   content: "";
   width: 20px;
   height: 20px;
-  background-image: url("./assets/svg/light-bulb.svg");
+  background-image: url("./assets/svg/light-bulb-off.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
+}
+.hint[disabled]:after {
+  background-image: url("./assets/svg/light-bulb-on.svg");
+}
+
+.showHint {
+  box-shadow: 0 0 0 #9ed996;
+  animation: pulse 1s infinite;
+}
+
+.showHint:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #9ed996;
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 #9ed996;
+    box-shadow: 0 0 0 0 #9ed996;
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

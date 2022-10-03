@@ -7,6 +7,7 @@ function AppContextProvider(props) {
   const [startGame, setStartGame] = useState(false);
   const [isFetchFailed, setIsFetchFailed] = useState(false);
   const [isFetchLoading, setIsFetchLoading] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
@@ -21,6 +22,7 @@ function AppContextProvider(props) {
         category: question.category,
         id: nanoid(),
         question: question.question,
+        showHint: false,
         answers: [
           {
             id: nanoid(),
@@ -116,6 +118,32 @@ function AppContextProvider(props) {
     triviaCategory: "any",
   });
 
+  function hintHandleClick (questionId) {
+    setRestructuredQuestionsArray((prevArray) => {
+      return prevArray.map((prevArrayItems) => {
+        return prevArrayItems.id === questionId
+          ? {
+              ...prevArrayItems,
+              showHint: !prevArrayItems.showHint,
+            }
+          : prevArrayItems;
+      });
+    });
+    setTimeout(() => {
+      setRestructuredQuestionsArray((prevArray) => {
+        return prevArray.map((prevArrayItems) => {
+          return prevArrayItems.id === questionId
+            ? {
+                ...prevArrayItems,
+                showHint: !prevArrayItems.showHint,
+              }
+            : prevArrayItems;
+        });
+      });
+    }, 3000)
+
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -132,7 +160,8 @@ function AppContextProvider(props) {
         isFetchFailed,
         setIsFetchFailed,
         isFetchLoading,
-        setIsFetchLoading
+        setIsFetchLoading,
+        hintHandleClick
       }}
     >
       {props.children}
