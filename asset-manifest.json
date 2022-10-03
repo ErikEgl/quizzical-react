@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/quizzical-react/static/css/main.e2dccd7e.css",
-    "main.js": "/quizzical-react/static/js/main.6c5209f6.js",
+    "main.css": "/quizzical-react/static/css/main.a2e3aa72.css",
+    "main.js": "/quizzical-react/static/js/main.0718ef64.js",
+    "static/media/light-bulb-on.svg": "/quizzical-react/static/media/light-bulb-on.f236426f94dbd4351fd6.svg",
+    "static/media/light-bulb-off.svg": "/quizzical-react/static/media/light-bulb-off.0056f8cbe8bfae7f48ec.svg",
     "index.html": "/quizzical-react/index.html",
-    "main.e2dccd7e.css.map": "/quizzical-react/static/css/main.e2dccd7e.css.map",
-    "main.6c5209f6.js.map": "/quizzical-react/static/js/main.6c5209f6.js.map"
+    "main.a2e3aa72.css.map": "/quizzical-react/static/css/main.a2e3aa72.css.map",
+    "main.0718ef64.js.map": "/quizzical-react/static/js/main.0718ef64.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2dccd7e.css",
-    "static/js/main.6c5209f6.js"
+    "static/css/main.a2e3aa72.css",
+    "static/js/main.0718ef64.js"
   ]
 }
