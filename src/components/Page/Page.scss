@@ -45,9 +45,9 @@
 
 
 $levels: (
-  "easy": rgb(158 217 150 / 50%),
-  "medium": rgb(248 244 175 / 50%),
-  "hard": rgb(241 144 144 / 50%),
+  "easy": $green-neutral,
+  "medium": $yellow-neutral,
+  "hard": $red-neutral,
 );
 
 @each $name, $color in $levels {

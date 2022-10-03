@@ -10,7 +10,7 @@ form {
   }
   select,
   input {
-    border-radius: 10px;
+    border-radius: $primary-border-radius;
     font-weight: 500;
     border: 1px solid transparent;
     background-color: transparent;
