@@ -25,7 +25,7 @@ function Page(props) {
   } = useContext(UserContext);
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
-      <div key={index} className={`quiz-item ${item.showHint} level-${item.answers[0].difficulty}`}>
+      <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
         <Hint isDisabled={item.showHint} questionId={item.id}/>
         {item.question && (
           <h2 dangerouslySetInnerHTML={{ __html: item.question }} />
