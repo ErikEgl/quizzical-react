@@ -102,22 +102,13 @@ function AppContextProvider(props) {
     restructuredQuestionsArray.map((quizItem) => {
       return quizItem.answers.map((answer) => {
         if (answer.isCorrect && answer.isHeld) {
-          setCorrectAnswersCounter(
-            (prevCount) => prevCount + +(answer.isCorrect && answer.isHeld)
-          );
+          setCorrectAnswersCounter(prevCount => prevCount + +(+answer.isCorrect && +answer.isHeld));
+          setGamePossessionsData(prevData => ({ gems: +prevData.gems + +(+answer.isCorrect && +answer.isHeld)}))
         }
         return answer;
       });
     });
-    return (
-    setGameEnd(true),
-    setGamePossessionsData(prevData => {
-      return ({
-          ...prevData,
-          gems: (prevData.gems + correctAnswersCounter),
-        }
-      )
-    }))
+    return setGameEnd(true)
   }
   const [formData, setFormData] = useState({
     triviaAmount: "5",
