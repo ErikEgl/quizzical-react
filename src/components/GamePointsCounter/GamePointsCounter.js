@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 function GamePointsCounter(props) {
-  const { gamePossessionsData, showUserErrorMessage } = useContext(UserContext);
+  const { gamePossessionsData } = useContext(UserContext);
   return (
     <>
       <div className="points-counter">

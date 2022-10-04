@@ -302,6 +302,14 @@ button.button-error {
   background-image: url("./assets/svg/light-bulb-on.svg");
 }
 
+.hint-error {
+  width: 45px;
+  display: block;
+  position: absolute;
+  top: 40px;
+  right: -50px;
+}
+
 .showHint {
   box-shadow: 0 0 0 #9ed996;
   animation: pulse 1s infinite;

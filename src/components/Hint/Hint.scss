@@ -1,8 +1,10 @@
 $size: 20px;
+$top-shift: 10px;
+$right-shift: -35px;
 .hint {
     position: absolute;
-    top: 10px;
-    right: -35px;
+    top: $top-shift;
+    right: $right-shift;
     width: $size;
     height: $size;
     &::after {
@@ -24,6 +26,13 @@ $size: 20px;
             background-image: url("./assets/svg/light-bulb-on.svg");
         } 
     }
+}
+.hint-error {
+  width: 45px;
+  display: block;
+  position: absolute;
+  top: $top-shift + 30px;
+  right: $right-shift - 15px;
 }
 .showHint {
     box-shadow: 0 0 0 $green-standard;

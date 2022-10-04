@@ -26,7 +26,7 @@ function Page(props) {
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
       <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
-        <Hint isDisabled={item.showHint} questionId={item.id}/>
+        <Hint isDisabled={item.showHint || item.showHintErrorMessage} questionId={item.id}/>
         {item.question && (
           <h2 dangerouslySetInnerHTML={{ __html: item.question }} />
         )}
@@ -44,7 +44,7 @@ function Page(props) {
                   } ${
                     gameEnd && el.isHeld && !el.isCorrect ? "button-error" : ""
                   } ${
-                    item.showHint && el.isCorrect ? "showHint" : ""
+                    item.showHint && el.isCorrect && !item.showHintErrorMessage ? "showHint" : ""
                   }`}
                   disabled={gameEnd}
                   id={el.isCorrect === true ? "correct" : ""}
