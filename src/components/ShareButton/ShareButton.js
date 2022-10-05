@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../utils/useContext";
+import React from "react";
 function ShareButton(props) {
-  const {  } =
-    useContext(UserContext);
-
   return (
     <>
         <li>
-            <a className={`social-link icon-${props.alt}`} href={props.link} alt={props.alt}></a>
+            <a className={`social-link icon-${props.alt}`} href={props.link} alt={props.alt} aria-label={props.alt}></a>
         </li>
     </>
   );
