@@ -129,6 +129,7 @@ function AppContextProvider(props) {
   }, [gamePossessionsData])
 
   function hintHandleClick (questionId) {
+    const durationTime = 5000;
     if(gamePossessionsData.gems >= 10) {
       setGamePossessionsData(prevData => {
         return ({
@@ -158,7 +159,7 @@ function AppContextProvider(props) {
               : prevArrayItems;
           });
         });
-      }, 3000)
+      }, durationTime)
     } else {
       setRestructuredQuestionsArray((prevArray) => {
         return prevArray.map((prevArrayItems) => {
@@ -181,7 +182,7 @@ function AppContextProvider(props) {
               : prevArrayItems;
           });
         });
-      }, 3000)
+      }, durationTime)
     }
   }
 

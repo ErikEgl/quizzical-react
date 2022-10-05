@@ -314,9 +314,10 @@ button.button-error {
 
 .showHint {
   box-shadow: 0 0 0 #459d39;
-  background-image: linear-gradient(45deg, rgba(158, 217, 150, 0.5), transparent);
-  background-size: 400%;
-  animation: pulse 3s infinite, slidebg 3s infinite;
+  background-image: radial-gradient(white 0%, rgba(158, 217, 150, 0.5) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: pulse 1s ease-in-out 0.75s infinite, slidebg 1s cubic-bezier(1, 0, 0.58, 1) infinite;
 }
 
 .showHint:hover {
@@ -325,10 +326,10 @@ button.button-error {
 
 @keyframes slidebg {
   0% {
-    background-position: left;
+    background-size: 0%, 0%;
   }
   100% {
-    background-position: right;
+    background-size: 100% 100%;
   }
 }
 @-webkit-keyframes pulse {
