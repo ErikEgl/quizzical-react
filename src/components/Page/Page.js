@@ -91,8 +91,9 @@ function Page(props) {
                   className="button-primary"
                   key={nanoid()}
                   content={gameEnd ? "Start quiz again" : "Check answers"}
-                />
+                  />
               </div>
+                <div style={{textAlign: "center"}}>{gameEnd && <>Share your game result! <ShareButtons endGame={gameEnd}/></>}</div>
             </>
           )}
         </section>

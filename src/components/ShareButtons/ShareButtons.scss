@@ -35,3 +35,10 @@ ul.social-links {
         }
     }
 }
+
+ul.social-links.position-bottom {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
