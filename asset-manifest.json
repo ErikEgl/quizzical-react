@@ -1,15 +1,19 @@
 {
   "files": {
-    "main.css": "/quizzical-react/static/css/main.f0e487f7.css",
-    "main.js": "/quizzical-react/static/js/main.2c95ddf6.js",
+    "main.css": "/quizzical-react/static/css/main.55e85b3f.css",
+    "main.js": "/quizzical-react/static/js/main.fd001c2d.js",
     "static/media/light-bulb-on.svg": "/quizzical-react/static/media/light-bulb-on.f236426f94dbd4351fd6.svg",
     "static/media/light-bulb-off.svg": "/quizzical-react/static/media/light-bulb-off.0056f8cbe8bfae7f48ec.svg",
+    "static/media/twitter.svg": "/quizzical-react/static/media/twitter.df391e9c37c2d181f98a.svg",
+    "static/media/whatsapp.svg": "/quizzical-react/static/media/whatsapp.008f1835dd05c4f72d51.svg",
+    "static/media/linkedin.svg": "/quizzical-react/static/media/linkedin.d09d64fe30b941c2d5db.svg",
+    "static/media/facebook.svg": "/quizzical-react/static/media/facebook.773c1a5a33d10795c60a.svg",
     "index.html": "/quizzical-react/index.html",
-    "main.f0e487f7.css.map": "/quizzical-react/static/css/main.f0e487f7.css.map",
-    "main.2c95ddf6.js.map": "/quizzical-react/static/js/main.2c95ddf6.js.map"
+    "main.55e85b3f.css.map": "/quizzical-react/static/css/main.55e85b3f.css.map",
+    "main.fd001c2d.js.map": "/quizzical-react/static/js/main.fd001c2d.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0e487f7.css",
-    "static/js/main.2c95ddf6.js"
+    "static/css/main.55e85b3f.css",
+    "static/js/main.fd001c2d.js"
   ]
 }
