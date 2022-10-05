@@ -372,8 +372,10 @@ ul.social-links {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  padding: 0;
 }
 ul.social-links li {
+  padding: 0;
   list-style: none;
 }
 ul.social-links li a.icon-facebook {
@@ -381,8 +383,10 @@ ul.social-links li a.icon-facebook {
   position: relative;
   width: 25px;
   height: 25px;
+  padding: 0;
 }
 ul.social-links li a.icon-facebook::after {
+  display: block;
   position: absolute;
   content: "";
   top: 0;
@@ -400,8 +404,10 @@ ul.social-links li a.icon-twitter {
   position: relative;
   width: 25px;
   height: 25px;
+  padding: 0;
 }
 ul.social-links li a.icon-twitter::after {
+  display: block;
   position: absolute;
   content: "";
   top: 0;
@@ -419,8 +425,10 @@ ul.social-links li a.icon-linkedin {
   position: relative;
   width: 25px;
   height: 25px;
+  padding: 0;
 }
 ul.social-links li a.icon-linkedin::after {
+  display: block;
   position: absolute;
   content: "";
   top: 0;
@@ -438,8 +446,10 @@ ul.social-links li a.icon-whatsapp {
   position: relative;
   width: 25px;
   height: 25px;
+  padding: 0;
 }
 ul.social-links li a.icon-whatsapp::after {
+  display: block;
   position: absolute;
   content: "";
   top: 0;

@@ -5,7 +5,9 @@ ul.social-links {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    padding: 0;
     li {
+        padding: 0;
         list-style: none;
         $classes: 'facebook', 'twitter', 'linkedin', 'whatsapp';
         @each $class in $classes {
@@ -14,7 +16,9 @@ ul.social-links {
             position: relative;
             width: 25px;
             height: 25px;
+            padding: 0;
             &::after {
+                display: block;
                 position: absolute;
                 content: '';
                 top: 0;
