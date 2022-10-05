@@ -5,8 +5,8 @@ import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 import Hint from "../Hint/Hint";
 import ShareButtons from "../ShareButtons/ShareButtons";
-//TODO: hints (like in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
-
+//TODO: hints (like in who want to ba a millionare, only 3 hints)
+//TODO: hints gives different amount of points depends on difficulty level
 //TODO: add login to save points
 //TODO: add category info to all questions if any
 //TODO: don`t let check answers before all is choosed
