@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 import Hint from "../Hint/Hint";
+import ShareButtons from "../ShareButtons/ShareButtons";
 //TODO: hints (like in who want to ba a millionare, only 3 hints, every correct answ gives 1 point 1 hint = 10points
 
 //TODO: add login to save points
@@ -97,6 +98,7 @@ function Page(props) {
         </section>
       ) : (
         <section>
+          <ShareButtons />
           <h1>Quizzical</h1>
           <QuizOptionsSelect />
           <button onClick={startQuiz} className="button-primary start-btn" disabled={isFetchLoading}>

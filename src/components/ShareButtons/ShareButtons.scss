@@ -1,0 +1,33 @@
+ul.social-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    li {
+        list-style: none;
+        $classes: 'facebook', 'twitter', 'linkedin', 'whatsapp';
+        @each $class in $classes {
+        a.icon-#{$class} {
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 25px;
+            &::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 25px;
+                height: 25px;
+                border-radius: 50px;
+                background-image: url(./assets/svg/social-icons/#{$class}.svg);
+                background-repeat: no-repeat;
+                background-size: 15px;
+                background-position: center;
+            }
+        }
+        }
+    }
+}

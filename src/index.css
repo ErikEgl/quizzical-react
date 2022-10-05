@@ -366,4 +366,92 @@ button.button-error {
   flex-direction: column;
 }
 
+ul.social-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+ul.social-links li {
+  list-style: none;
+}
+ul.social-links li a.icon-facebook {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+ul.social-links li a.icon-facebook::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-image: url(./assets/svg/social-icons/facebook.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: center;
+}
+ul.social-links li a.icon-twitter {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+ul.social-links li a.icon-twitter::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-image: url(./assets/svg/social-icons/twitter.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: center;
+}
+ul.social-links li a.icon-linkedin {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+ul.social-links li a.icon-linkedin::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-image: url(./assets/svg/social-icons/linkedin.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: center;
+}
+ul.social-links li a.icon-whatsapp {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+ul.social-links li a.icon-whatsapp::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-image: url(./assets/svg/social-icons/whatsapp.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: center;
+}
+
 /*# sourceMappingURL=index.css.map */
