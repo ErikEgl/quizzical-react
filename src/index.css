@@ -31,7 +31,6 @@ main {
 
 section {
   overflow: auto;
-  padding: 5% 14%;
   z-index: 2;
 }
 
