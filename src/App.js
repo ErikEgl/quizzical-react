@@ -5,7 +5,7 @@ import GamePointsCounter from "./components/GamePointsCounter/GamePointsCounter"
 function App() {
   return (
     <>
-      <main style={{padding: "50px 40px"}}>
+      <main style={{padding: "20px 40px"}}>
         <Blob color={"yellow"}/>
         <GamePointsCounter />
         <Page />

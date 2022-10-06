@@ -62,7 +62,7 @@ function Page(props) {
   return (
     <>
       {startGame ? (
-        <section style={{padding: "50px"}}>
+        <section style={{padding: "0 50px"}}>
           {isFetchFailed ? (
             <>
               <h2>Oops, something went wrong</h2>
