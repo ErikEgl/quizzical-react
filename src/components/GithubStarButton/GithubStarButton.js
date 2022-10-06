@@ -5,7 +5,7 @@ function GithubStarButton(props) {
   return (
     <>
         <li>
-            <GitHubButton href="https://github.com/ErikEgl/quizzical-react" data-icon="octicon-star" aria-label="Star ErikEgl/quizzical-react on GitHub">Star</GitHubButton>
+            <GitHubButton href="https://github.com/ErikEgl/quizzical-react" data-show-count="true" data-icon="octicon-star" aria-label="Star ErikEgl/quizzical-react on GitHub">Star</GitHubButton>
         </li>
     </>
   );
