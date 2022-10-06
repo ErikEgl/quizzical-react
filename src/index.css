@@ -385,7 +385,32 @@ button.button-error {
   display: flex;
   flex-direction: column;
 }
+.points-counter small {
+  position: relative;
+}
+.points-counter small span {
+  position: absolute;
+  right: 18px;
+  top: 35px;
+  opacity: 1;
+}
+.points-counter small span.slide-and-fade {
+  animation: slide-and-fade 0.7s linear 1;
+}
 
+@keyframes slide-and-fade {
+  0% {
+    top: 35px;
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 12px;
+    opacity: 0;
+  }
+}
 ul.social-links {
   position: absolute;
   top: 0;

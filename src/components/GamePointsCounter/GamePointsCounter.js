@@ -1,11 +1,27 @@
-import React, { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
 function GamePointsCounter(props) {
-  const { gamePossessionsData } = useContext(UserContext);
+  const { gamePossessionsData, correctAnswersCounter } = useContext(UserContext);
+  const [showEarnedGems, setShowEarnedGems] = useState(false)
+
+  useEffect(() => {
+    if(!!correctAnswersCounter) {
+      setShowEarnedGems(prevState => !prevState)
+      setTimeout(() => {
+        setShowEarnedGems(prevState => !prevState)
+      }, 700)
+    }
+  }, [!!correctAnswersCounter])
+
   return (
     <>
       <div className="points-counter">
-        <small>Gems: {gamePossessionsData.gems}💎</small>
+        <small>
+          Gems: {gamePossessionsData.gems}💎
+          <span className={`${showEarnedGems ? " slide-and-fade" : ''}`}>
+            {showEarnedGems && `+ ${+correctAnswersCounter}💎`}
+          </span>
+        </small>
       </div>
     
     </>
