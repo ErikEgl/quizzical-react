@@ -141,6 +141,7 @@ function AppContextProvider(props) {
     triviaAmount: "5",
     triviaDifficulty: "any",
     triviaCategory: "any",
+    triviaType: "any",
   });
 
 

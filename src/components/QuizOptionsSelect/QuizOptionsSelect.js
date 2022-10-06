@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
-import quizOptionsData from "./quizOptionsData";
-import quizDifficultyData from "./quizDifficultyData";
+import quizTypeData from "./quizOptionsData/quizTypeData";
 function QuizOptionsSelect(props) {
   const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed, setIsFetchLoading, isFetchLoading } = useContext(UserContext);
 
@@ -42,6 +41,13 @@ function QuizOptionsSelect(props) {
     return (
       <option key={item.level} value={item.level}>
         {item.levelTitle}
+      </option>
+    );
+  });
+  const quizTypeDataItems = quizTypeData.options.map((item) => {
+    return (
+      <option key={item.type} value={item.type}>
+        {item.typeTitle}
       </option>
     );
   });
@@ -91,9 +97,7 @@ function QuizOptionsSelect(props) {
             name="triviaType" 
             value={formData.triviaType}
             onChange={handleChange}>
-            <option value="any">Any Type</option>
-            <option value="multiple">Multiple Choice</option>
-            <option value="boolean">True / False</option>
+              {quizTypeDataItems}
           </select>
         </div>
       </form>
