@@ -17,7 +17,8 @@ function QuizOptionsSelect(props) {
 
   const API_CATEGORY = formData.triviaCategory === "any" ? "" : `&category=${formData.triviaCategory}`
   const API_DIFFICULTY = formData.triviaDifficulty === "any" ? "" :  `&difficulty=${formData.triviaDifficulty}`;
-  const API_URL = `https://opentdb.com/api.php?amount=${formData.triviaAmount}${API_CATEGORY}${API_DIFFICULTY}&type=multiple`;
+  const API_TYPE = formData.triviaType === "any" ? "" :  `&type=${formData.triviaType}`;
+  const API_URL = `https://opentdb.com/api.php?amount=${formData.triviaAmount}${API_CATEGORY}${API_DIFFICULTY}${API_TYPE}`;
   useEffect(() => {
     setIsFetchLoading(true)
     fetch(API_URL)
@@ -81,6 +82,18 @@ function QuizOptionsSelect(props) {
             onChange={handleChange}
           >
             {quizDifficultyDataItems}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="triviaType">Select Type: </label>
+          <select 
+            id="triviaType"
+            name="triviaType" 
+            value={formData.triviaType}
+            onChange={handleChange}>
+            <option value="any">Any Type</option>
+            <option value="multiple">Multiple Choice</option>
+            <option value="boolean">True / False</option>
           </select>
         </div>
       </form>

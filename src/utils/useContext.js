@@ -11,53 +11,80 @@ function AppContextProvider(props) {
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
   const [fetchedQuestions, setFetchedQuestions] = useState([]);
-  
   function startQuiz() {
     setGameEnd(false);
     setCorrectAnswersCounter(0);
     const newQuestionsArr = [];
     fetchedQuestions.map((question) => {
-      newQuestionsArr.push({
-        category: question.category,
-        id: nanoid(),
-        question: question.question,
-        showHint: false,
-        showHintErrorMessage: false,
-        answers: [
-          {
-            id: nanoid(),
-            answer: question.correct_answer,
-            isCorrect: true,
-            isHeld: false,
-            key: nanoid(),
-            difficulty: question.difficulty,
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[0],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-            difficulty: question.difficulty,
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[1],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-            difficulty: question.difficulty,
-          },
-          {
-            id: nanoid(),
-            answer: question.incorrect_answers[2],
-            isCorrect: false,
-            isHeld: false,
-            key: nanoid(),
-            difficulty: question.difficulty,
-          },
-        ],
-      });
+      if(question.type === 'boolean') {
+        newQuestionsArr.push({
+          category: question.category,
+          id: nanoid(),
+          question: question.question,
+          showHint: false,
+          showHintErrorMessage: false,
+          answers: [
+            {
+              id: nanoid(),
+              answer: question.correct_answer,
+              isCorrect: true,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+            {
+              id: nanoid(),
+              answer: question.incorrect_answers[0],
+              isCorrect: false,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+          ],
+        });
+      } else {
+        newQuestionsArr.push({
+          category: question.category,
+          id: nanoid(),
+          question: question.question,
+          showHint: false,
+          showHintErrorMessage: false,
+          answers: [
+            {
+              id: nanoid(),
+              answer: question.correct_answer,
+              isCorrect: true,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+            {
+              id: nanoid(),
+              answer: question.incorrect_answers[0],
+              isCorrect: false,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+            {
+              id: nanoid(),
+              answer: question.incorrect_answers[1],
+              isCorrect: false,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+            {
+              id: nanoid(),
+              answer: question.incorrect_answers[2],
+              isCorrect: false,
+              isHeld: false,
+              key: nanoid(),
+              difficulty: question.difficulty,
+            },
+          ],
+        });
+      }
       newQuestionsArr.map((quizItem) => {
         return quizItem.answers.sort(() => Math.random() - 0.5);
       });
