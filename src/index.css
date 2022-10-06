@@ -332,6 +332,10 @@ button.button-error {
   right: -50px;
 }
 
+.click-stop {
+  pointer-events: none;
+}
+
 .showHint {
   box-shadow: 0 0 0 #459d39;
   background-image: radial-gradient(white 0%, rgba(158, 217, 150, 0.5) 100%);

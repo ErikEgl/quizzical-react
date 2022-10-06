@@ -36,7 +36,9 @@ $right-shift: -35px;
   top: $top-shift + 30px;
   right: $right-shift - 15px;
 }
-
+.click-stop {
+  pointer-events: none;
+}
 $bg-size-initial: 0%;
 $bg-size-end: 100%;
 .showHint {
