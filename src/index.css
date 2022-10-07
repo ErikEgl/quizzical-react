@@ -298,6 +298,17 @@ button.button-error {
   background-color: rgba(241, 144, 144, 0.5);
 }
 
+.user-block {
+  padding: 0 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.user-block .cl-userButtonAvatarBox {
+  width: 4rem;
+  height: 4rem;
+}
+
 .hint {
   position: absolute;
   top: 10px;
@@ -518,6 +529,71 @@ ul.social-links.position-bottom {
   flex-direction: row;
   justify-content: center;
   text-align: center;
+}
+
+.login-button {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.login-button::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-image: url("./assets/svg/login.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+.login-button[disabled] {
+  pointer-events: none;
+}
+.login-button[disabled]::after {
+  opacity: 0.3;
+}
+
+.login-popup {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 5;
+  box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.5);
+}
+.login-popup .login-popup-close {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 6;
+}
+.login-popup .login-popup-close::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/svg/close.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+
+.cl-userButtonPopoverFooter {
+  display: none;
+}
+
+.cl-card.cl-card.cl-signIn-start {
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

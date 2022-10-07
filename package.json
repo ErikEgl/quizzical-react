@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://erikegl.github.io/quizzical-react",
   "dependencies": {
+    "@clerk/clerk-react": "^4.2.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-github-btn": "^1.4.0",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

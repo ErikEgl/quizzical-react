@@ -1,0 +1,63 @@
+.login-button {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-image: url("./assets/svg/login.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+  &[disabled] {
+    pointer-events: none;
+    &::after {
+        opacity: 0.3;
+    }
+  }
+}
+.login-popup {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 5;
+  box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.5);
+  .login-popup-close {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 6;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      content: "";
+      width: 30px;
+      height: 30px;
+      background-image: url("./assets/svg/close.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: transparent;
+    }
+  }
+}
+.cl-userButtonPopoverFooter {
+  display: none;
+}
+.cl-card.cl-card.cl-signIn-start {
+  margin: 0;
+}

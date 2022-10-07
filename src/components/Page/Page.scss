@@ -67,3 +67,15 @@ $levels: (
     }
   }
 }
+
+
+.user-block {
+  padding: 0 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  .cl-userButtonAvatarBox {
+    width: 4rem;
+    height: 4rem;
+  }
+}
