@@ -17,7 +17,7 @@ document.addEventListener('mousedown', closeOpenPopup)
       {showPopup && (
         <div ref={catMenu} className="login-popup">
             <button onClick={() => setShowPopup((prevState) => !prevState)} className="login-popup-close"></button>
-          <SignIn />
+          <SignIn redirectUrl="/quizzical-react/" />
         </div>
       )}
     </>
