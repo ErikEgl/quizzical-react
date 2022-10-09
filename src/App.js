@@ -1,6 +1,7 @@
 import Page from "./components/Page/Page";
 import Blob from "./components/Blob/Blob";
 import GamePointsCounter from "./components/GamePointsCounter/GamePointsCounter";
+import ListFirebaseInformation from "./components/ListFirebaseInformation/ListFirebaseInformation";
 import {  
   ClerkProvider,
   SignedIn,
@@ -17,6 +18,7 @@ function App() {
     <ClerkProvider frontendApi={frontendApi}>
       <SignedIn>
         <MainApp />
+        <ListFirebaseInformation />
       </SignedIn>
       <SignedOut>
         <Login />
