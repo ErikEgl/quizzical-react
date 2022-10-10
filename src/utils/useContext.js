@@ -7,9 +7,9 @@ function AppContextProvider(props) {
   const [startGame, setStartGame] = useState(false);
   const [isFetchFailed, setIsFetchFailed] = useState(false);
   const [isFetchLoading, setIsFetchLoading] = useState(false);
-  
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
   const [fetchedQuestions, setFetchedQuestions] = useState([]);
   function startQuiz() {
     setGameEnd(false);
@@ -214,7 +214,7 @@ function AppContextProvider(props) {
     }
   }
 
-
+  
   return (
     <UserContext.Provider
       value={{

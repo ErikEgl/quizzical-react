@@ -1,30 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { collection, getDocs, getDoc, doc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase"
+import { UserContext } from "../../utils/useContext";
+import { db } from "../../firebase";
+import { useUser } from "@clerk/clerk-react";
 
-export default function ListFirebaseInformation() {
+function ListFirebaseInformation() {
+  const {
+    gamePossessionsData,
+    setGamePossessionsData,
+    gameEnd,
+  } = useContext(UserContext);
+  const { isLoaded, isSignedIn, user } = useUser();
 
-    async function getUserGameData() {
-        const docRef = doc(db, "cities", "BJ");
-        const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-        }
+  useEffect(() => {
+    if (isSignedIn && isLoaded) {
+      getUserGameData();
+      return
     }
-    getUserGameData()
-    const userRef = doc(db, 'cities', 'BJ');
-    setDoc(userRef, { capital: 1, city: "false", data: [1, 2, 3], }, { merge: true });
-    console.log(userRef);
-    return (
-        <div>
-            <h4>List blog posts</h4>
-            {/* {posts.map((post) => 
+  }, [isSignedIn, isLoaded]);
+
+  useEffect(() => {
+    if (isSignedIn && isLoaded && gameEnd) {
+      const userRef = doc(db, "users", user.id);
+      setDoc(userRef, { gems: +gamePossessionsData.gems }, { merge: true });
+    }
+  }, [gameEnd]);
+
+  async function getUserGameData() {
+    const docSnap = await getDoc(doc(db, "users", user.id));
+    if (docSnap.exists()) {
+      if (docSnap.data().gems) {
+        setGamePossessionsData({gems: +docSnap.data().gems});
+      }
+    }
+  }
+  return (
+    <>
+      {/* <h4>List blog </h4> */}
+      {/* {posts.map((post) => 
                 <a key={post.data.name} href="#">{post.data.name}</a>
             )} */}
-        </div>
-    )
+    </>
+  );
 }
+
+export default ListFirebaseInformation;

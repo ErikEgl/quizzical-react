@@ -1,8 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
-function GamePointsCounter(props) {
-  const { gamePossessionsData, correctAnswersCounter } = useContext(UserContext);
+function GamePointsCounter({isSignedIn}) {
+  const { gamePossessionsData, correctAnswersCounter, setGamePossessionsData } = useContext(UserContext);
   const [showEarnedGems, setShowEarnedGems] = useState(false)
+
+
 
   useEffect(() => {
     if(!!correctAnswersCounter) {
@@ -13,6 +15,20 @@ function GamePointsCounter(props) {
     }
   }, [!!correctAnswersCounter])
 
+  useEffect(() => {
+    if(!isSignedIn)  { 
+      console.log("gems from localstorage");
+      if(gamePossessionsData.gems !== 50) return;
+      setGamePossessionsData({
+        gems: 50,
+      })
+    } else {
+      console.log("gems from database");
+    }
+  }, [isSignedIn])
+
+  console.log("isSignedIn: ", isSignedIn);
+  console.log("gamePossessionsData: ", gamePossessionsData);
   return (
     <>
       <div className="points-counter">

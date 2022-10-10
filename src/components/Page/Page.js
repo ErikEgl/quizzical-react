@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 import Hint from "../Hint/Hint";
 import ShareButtons from "../ShareButtons/ShareButtons";
-
+import SignOut from "../SignOut/SignOut";
 import { UserButton, useUser } from "@clerk/clerk-react";
 //TODO: hints (like in who want to ba a millionare, only 3 hints)
 //TODO: hints gives different amount of points depends on difficulty level
@@ -26,7 +26,7 @@ function Page(props) {
     formData,
     isFetchLoading
   } = useContext(UserContext);
-  const { user } = useUser();
+  const { user, isSignedIn } = useUser();
   const quizItem = restructuredQuestionsArray.map((item, index) => {
     return (
       <div key={index} className={`quiz-item level-${item.answers[0].difficulty}`}>
@@ -105,10 +105,14 @@ function Page(props) {
           <ShareButtons />
           
           <h1>Quizzical</h1>
+          {isSignedIn && (
           <div className="user-block">
             <UserButton />
+            
             {user ? <p>Hello, {user.firstName}!</p> : null} 
+            <SignOut/>
           </div>
+          )}
           <QuizOptionsSelect />
           <button onClick={startQuiz} className="button-primary start-btn" disabled={isFetchLoading}>
             Start quiz {<div className="spinner-dual-ring"></div>}

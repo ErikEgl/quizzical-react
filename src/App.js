@@ -8,6 +8,7 @@ import {
   SignedOut,
   SignIn
  } from "@clerk/clerk-react";
+ import { useUser } from "@clerk/clerk-react";
 import Login from "./components/Login/Login";
 const frontendApi = process.env.REACT_APP_CLERK_FRONTEND_API;
 
@@ -30,10 +31,12 @@ function App() {
   );
 }
 function MainApp() {
+  const { isSignedIn } = useUser();
+
   return (
     <main style={{padding: "20px 40px"}}>
       <Blob color={"yellow"}/>
-      <GamePointsCounter />
+      <GamePointsCounter isSignedIn={isSignedIn} />
       <Page />
       <Blob color={"blue"}/>
     </main>
