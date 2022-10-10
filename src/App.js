@@ -5,8 +5,7 @@ import ListFirebaseInformation from "./components/ListFirebaseInformation/ListFi
 import {  
   ClerkProvider,
   SignedIn,
-  SignedOut,
-  SignIn
+  SignedOut
  } from "@clerk/clerk-react";
  import { useUser } from "@clerk/clerk-react";
 import Login from "./components/Login/Login";

@@ -9,7 +9,6 @@ function AppContextProvider(props) {
   const [isFetchLoading, setIsFetchLoading] = useState(false);
   const [correctAnswersCounter, setCorrectAnswersCounter] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
-  const [signingOut, setSigningOut] = useState(false);
   const [fetchedQuestions, setFetchedQuestions] = useState([]);
   function startQuiz() {
     setGameEnd(false);
@@ -234,9 +233,7 @@ function AppContextProvider(props) {
         setIsFetchLoading,
         hintHandleClick,
         setGamePossessionsData,
-        gamePossessionsData,
-        signingOut,
-        setSigningOut
+        gamePossessionsData
       }}
     >
       {props.children}

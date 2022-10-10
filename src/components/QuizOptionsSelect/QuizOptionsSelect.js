@@ -4,7 +4,7 @@ import quizOptionsData from "./quizOptionsData/quizOptionsData";
 import quizDifficultyData from "./quizOptionsData/quizDifficultyData";
 import quizTypeData from "./quizOptionsData/quizTypeData";
 function QuizOptionsSelect(props) {
-  const { gameEnd, setFetchedQuestions, formData, setFormData, setIsFetchFailed, setIsFetchLoading, isFetchLoading } = useContext(UserContext);
+  const { gameEnd, setFetchedQuestions, formData, setFormData,  setIsFetchLoading } = useContext(UserContext);
 
   function handleChange(event) {
     const { name, value } = event.target;

@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../utils/useContext";
-function GamePointsCounter({isSignedIn}) {
-  const { gamePossessionsData, correctAnswersCounter, setGamePossessionsData } = useContext(UserContext);
+function GamePointsCounter() {
+  const { gamePossessionsData, correctAnswersCounter } = useContext(UserContext);
   const [showEarnedGems, setShowEarnedGems] = useState(false)
 
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { collection, getDocs, getDoc, doc, setDoc } from "firebase/firestore";
+import {  useEffect, useContext } from "react";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 import { UserContext } from "../../utils/useContext";
 import { db } from "../../firebase";
 import { useUser } from "@clerk/clerk-react";
@@ -35,14 +35,6 @@ function ListFirebaseInformation() {
       }
     }
   }
-  return (
-    <>
-      {/* <h4>List blog </h4> */}
-      {/* {posts.map((post) => 
-                <a key={post.data.name} href="#">{post.data.name}</a>
-            )} */}
-    </>
-  );
 }
 
 export default ListFirebaseInformation;

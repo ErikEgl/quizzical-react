@@ -1,4 +1,3 @@
-import React from "react";
 const parser = new DOMParser();
 
 function Button(props) {

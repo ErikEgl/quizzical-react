@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../utils/useContext";
 function Hint(props) {
   const { hintHandleClick, gamePossessionsData, gameEnd } =
