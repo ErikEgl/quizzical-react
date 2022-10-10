@@ -235,6 +235,8 @@ function AppContextProvider(props) {
         hintHandleClick,
         setGamePossessionsData,
         gamePossessionsData,
+        signingOut,
+        setSigningOut
       }}
     >
       {props.children}
