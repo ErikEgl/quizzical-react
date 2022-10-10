@@ -2,14 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDAlK6_oPhh3ZgtqduyVhBz4rxkLg4VmsE",
-  authDomain: "quizzical-react-260e4.firebaseapp.com",
-  databaseURL:
-    "https://quizzical-react-260e4-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "quizzical-react-260e4",
-  storageBucket: "quizzical-react-260e4.appspot.com",
-  messagingSenderId: "326887538180",
-  appId: "1:326887538180:web:21858bd5562d271333bf51",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain:process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_API,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
