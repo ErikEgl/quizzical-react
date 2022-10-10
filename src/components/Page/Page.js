@@ -107,10 +107,11 @@ function Page(props) {
           <h1>Quizzical</h1>
           {isSignedIn && (
           <div className="user-block">
-            <UserButton />
-            
-            {user ? <p>Hello, {user.firstName}!</p> : null} 
-            <SignOut/>
+            {user ? <img  src={user.profileImageUrl} alt={user.fullName} /> : null} 
+            <div>
+              {user ? <p>Hello, {user.firstName}!</p> : null} 
+              <SignOut/>
+            </div>
           </div>
           )}
           <QuizOptionsSelect />

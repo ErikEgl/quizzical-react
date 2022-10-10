@@ -304,7 +304,23 @@ button.button-error {
   align-items: center;
   gap: 0.5rem;
 }
-.user-block .cl-userButtonAvatarBox {
+.user-block div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.user-block div p {
+  margin: 0;
+}
+.user-block div button {
+  padding: 0;
+}
+.user-block img {
+  display: block;
+  border-radius: 50%;
   width: 4rem;
   height: 4rem;
 }
