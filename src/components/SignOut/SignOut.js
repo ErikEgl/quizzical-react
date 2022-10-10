@@ -1,19 +1,18 @@
 import { useClerk } from "@clerk/clerk-react";
 import { UserContext } from "../../utils/useContext";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 const SignOut = () => {
-  const { signingOut, setSigningOut } = useContext(UserContext);
+  const { setGamePossessionsData } = useContext(UserContext);
 
   const { signOut } = useClerk();
   function clickHandler() {
-    setSigningOut(prevState => !prevState)
     signOut()
-    setTimeout(() => {
-      setSigningOut(prevState => !prevState)
-    }, 5000)
+    setGamePossessionsData({
+      gems: 50,
+    })
   }
   return (
-    <button onClick={() => signOut()} >
+    <button onClick={() => clickHandler()} >
       Sign out
     </button>
   );

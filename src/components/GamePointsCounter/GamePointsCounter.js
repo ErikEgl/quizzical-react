@@ -15,20 +15,7 @@ function GamePointsCounter({isSignedIn}) {
     }
   }, [!!correctAnswersCounter])
 
-  useEffect(() => {
-    if(!isSignedIn)  { 
-      console.log("gems from localstorage");
-      if(gamePossessionsData.gems !== 50) return;
-      setGamePossessionsData({
-        gems: 50,
-      })
-    } else {
-      console.log("gems from database");
-    }
-  }, [isSignedIn])
 
-  console.log("isSignedIn: ", isSignedIn);
-  console.log("gamePossessionsData: ", gamePossessionsData);
   return (
     <>
       <div className="points-counter">
