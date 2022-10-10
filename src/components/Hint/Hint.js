@@ -12,7 +12,7 @@ function Hint(props) {
             onClick={() => hintHandleClick(props.questionId)}
             className={`${gameEnd ? "click-stop" : ''} hint hint-icon`}
           ></button>
-          {gamePossessionsData.gems <= 10 && props.isDisabled && (
+          {gamePossessionsData.gems < 10 && props.isDisabled && (
             <small className="hint-error"> Hint costs 10💎 </small>
           )}
         </>
