@@ -27,7 +27,7 @@ function QuizOptionsSelect(props) {
     .then((data) => {
       return (
         setIsFetchLoading(false),
-        setFetchedQuestions(data.results)
+        setFetchedQuestions(data)
       )
     }
     );

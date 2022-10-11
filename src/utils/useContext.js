@@ -14,7 +14,7 @@ function AppContextProvider(props) {
     setGameEnd(false);
     setCorrectAnswersCounter(0);
     const newQuestionsArr = [];
-    fetchedQuestions.map((question) => {
+    fetchedQuestions.results.map((question) => {
       if(question.type === 'boolean') {
         newQuestionsArr.push({
           category: question.category,
@@ -224,6 +224,7 @@ function AppContextProvider(props) {
         correctAnswersCounter,
         startQuiz,
         countCorrectAnswers,
+        fetchedQuestions,
         setFetchedQuestions,
         formData,
         setFormData,

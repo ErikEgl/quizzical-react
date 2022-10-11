@@ -24,7 +24,8 @@ function Page(props) {
     countCorrectAnswers,
     isFetchFailed,
     formData,
-    isFetchLoading
+    isFetchLoading,
+    fetchedQuestions
   } = useContext(UserContext);
   const { user, isSignedIn } = useUser();
   const quizItem = restructuredQuestionsArray.map((item, index) => {
@@ -115,9 +116,9 @@ function Page(props) {
           </div>
           )}
           <QuizOptionsSelect />
-          <button onClick={startQuiz} className="button-primary start-btn" disabled={isFetchLoading}>
-            Start quiz {<div className="spinner-dual-ring"></div>}
-          </button>
+          <button onClick={startQuiz} className="button-primary start-btn" disabled={isFetchLoading || fetchedQuestions.response_code !== 0 }>
+          {fetchedQuestions.response_code !== 0 ? `Something went wrong, choose something else` : 'Start quiz'} {isFetchLoading && <div className="spinner-dual-ring"></div>}
+          </button>    
         </section>
       )}
     </>
