@@ -50,33 +50,21 @@ function AppContextProvider(props) {
 
   function holdAnswer(questionId, answerId) {
     //set all isHeld values to false, to eliminate a possibility to choose 2 answers simultaneously
-    setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayItems) => {
-        return prevArrayItems.id === questionId
-          ? {
-              ...prevArrayItems,
-              answers: prevArrayItems.answers.map((answer) => {
-                return { ...answer, isHeld: false };
-              }),
-            }
-          : prevArrayItems;
-      });
-    });
     //set clicked button`s isHeld value to true
-    setRestructuredQuestionsArray((prevArray) => {
-      return prevArray.map((prevArrayItems) => {
-        return prevArrayItems.id === questionId
+     setRestructuredQuestionsArray((prevArray) =>
+      prevArray.map((prevArrayItems) =>
+        prevArrayItems.id === questionId
           ? {
               ...prevArrayItems,
-              answers: prevArrayItems.answers.map((answer) => {
-                return answer.id === answerId
+              answers: prevArrayItems.answers.map((answer) =>
+                answer.id === answerId
                   ? { ...answer, isHeld: !answer.isHeld }
-                  : answer;
-              }),
+                  : { ...answer, isHeld: false }
+              ),
             }
-          : prevArrayItems;
-      });
-    });
+          : prevArrayItems
+      )
+    );
   }
 
   function countCorrectAnswers() {
