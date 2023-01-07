@@ -3,6 +3,8 @@ import { UserContext } from "../../utils/useContext";
 import quizOptionsData from "./quizOptionsData/quizOptionsData";
 import quizDifficultyData from "./quizOptionsData/quizDifficultyData";
 import quizTypeData from "./quizOptionsData/quizTypeData";
+import QuizDataItemsWrap from "./quizDataItemsWrap/quizDataItemsWrap";
+
 function QuizOptionsSelect(props) {
   const { gameEnd, setFetchedQuestions, formData, setFormData,  setIsFetchLoading } = useContext(UserContext);
 
@@ -32,6 +34,7 @@ function QuizOptionsSelect(props) {
     }
     );
   }, [formData, gameEnd]);
+
   const quizOptionsDataItems = quizOptionsData.options.map((item) => {
     return (
       <option key={item.value} value={item.value}>
@@ -69,39 +72,9 @@ function QuizOptionsSelect(props) {
             onChange={handleChange}
           />
         </span>
-        <div>
-          <label htmlFor="triviaCategory">Select Category: </label>
-          <select
-            id="triviaCategory"
-            name="triviaCategory"
-            value={formData.triviaCategory}
-            onChange={handleChange}
-            className="button-primary"
-          >
-            {quizOptionsDataItems}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="triviaDifficulty">Select Difficulty: </label>
-          <select
-            id="triviaDifficulty"
-            name="triviaDifficulty"
-            value={formData.triviaDifficulty}
-            onChange={handleChange}
-          >
-            {quizDifficultyDataItems}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="triviaType">Select Type: </label>
-          <select 
-            id="triviaType"
-            name="triviaType" 
-            value={formData.triviaType}
-            onChange={handleChange}>
-              {quizTypeDataItems}
-          </select>
-        </div>
+        <QuizDataItemsWrap classification={"triviaCategory"} title={"Category"} value={formData.triviaCategory} func={handleChange} children={quizOptionsDataItems}/>
+        <QuizDataItemsWrap classification={"triviaDifficulty"} title={"Difficulty"} value={formData.triviaDifficulty} func={handleChange} children={quizDifficultyDataItems}/>
+        <QuizDataItemsWrap classification={"triviaType"} title={"Type"} value={formData.triviaType} func={handleChange} children={quizTypeDataItems}/>
       </form>
     </>
   );
