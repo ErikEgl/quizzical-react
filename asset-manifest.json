@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/quizzical-react/static/css/main.06190a4a.css",
-    "main.js": "/quizzical-react/static/js/main.1df6ddcc.js",
+    "main.js": "/quizzical-react/static/js/main.83d39382.js",
     "static/media/light-bulb-on.svg": "/quizzical-react/static/media/light-bulb-on.f236426f94dbd4351fd6.svg",
     "static/media/light-bulb-off.svg": "/quizzical-react/static/media/light-bulb-off.0056f8cbe8bfae7f48ec.svg",
     "static/media/twitter.svg": "/quizzical-react/static/media/twitter.df391e9c37c2d181f98a.svg",
@@ -12,10 +12,10 @@
     "index.html": "/quizzical-react/index.html",
     "static/media/close.svg": "/quizzical-react/static/media/close.a8317e023b9d0c3ecbd6.svg",
     "main.06190a4a.css.map": "/quizzical-react/static/css/main.06190a4a.css.map",
-    "main.1df6ddcc.js.map": "/quizzical-react/static/js/main.1df6ddcc.js.map"
+    "main.83d39382.js.map": "/quizzical-react/static/js/main.83d39382.js.map"
   },
   "entrypoints": [
     "static/css/main.06190a4a.css",
-    "static/js/main.1df6ddcc.js"
+    "static/js/main.83d39382.js"
   ]
 }
