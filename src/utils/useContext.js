@@ -112,60 +112,44 @@ function AppContextProvider(props) {
 
   function hintHandleClick (questionId) {
     const durationTime = 5000;
-    if(gamePossessionsData.gems >= 10) {
-      setGamePossessionsData(prevData => {
-        return ({
-            ...prevData,
-            gems: (prevData.gems - 10),
-          }
-        )
-      })
-      setRestructuredQuestionsArray((prevArray) => {
-        return prevArray.map((prevArrayItems) => {
-          return prevArrayItems.id === questionId
-            ? {
-                ...prevArrayItems,
-                showHint: !prevArrayItems.showHint,
-              }
-            : prevArrayItems;
-        });
-      });
-      setTimeout(() => {
-        setRestructuredQuestionsArray((prevArray) => {
-          return prevArray.map((prevArrayItems) => {
-            return prevArrayItems.id === questionId
-              ? {
-                  ...prevArrayItems,
-                  showHint: !prevArrayItems.showHint,
-                }
-              : prevArrayItems;
-          });
-        });
-      }, durationTime)
+    if (gamePossessionsData.gems >= 10) {
+      setGamePossessionsData(prevData => ({
+        ...prevData,
+        gems: prevData.gems - 10,
+      }));
+  
+      toggleHint(questionId, true);
+      setTimeout(() => toggleHint(questionId, false), durationTime);
     } else {
-      setRestructuredQuestionsArray((prevArray) => {
-        return prevArray.map((prevArrayItems) => {
-          return prevArrayItems.id === questionId
-            ? {
-                ...prevArrayItems,
-                showHintErrorMessage: !prevArrayItems.showHintErrorMessage,
-              }
-            : prevArrayItems;
-        });
-      });
-      setTimeout(() => {
-        setRestructuredQuestionsArray((prevArray) => {
-          return prevArray.map((prevArrayItems) => {
-            return prevArrayItems.id === questionId
-              ? {
-                  ...prevArrayItems,
-                  showHintErrorMessage: !prevArrayItems.showHintErrorMessage,
-                }
-              : prevArrayItems;
-          });
-        });
-      }, durationTime)
+      toggleErrorMessage(questionId, true);
+      setTimeout(() => toggleErrorMessage(questionId, false), durationTime);
     }
+  }
+  
+  function toggleHint(questionId, show) {
+    setRestructuredQuestionsArray((prevArray) =>
+      prevArray.map((prevArrayItems) =>
+        prevArrayItems.id === questionId
+          ? {
+              ...prevArrayItems,
+              showHint: show,
+            }
+          : prevArrayItems
+      )
+    );
+  }
+  
+  function toggleErrorMessage(questionId, show) {
+    setRestructuredQuestionsArray((prevArray) =>
+      prevArray.map((prevArrayItems) =>
+        prevArrayItems.id === questionId
+          ? {
+              ...prevArrayItems,
+              showHintErrorMessage: show,
+            }
+          : prevArrayItems
+      )
+    );
   }
 
   
