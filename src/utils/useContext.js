@@ -151,6 +151,7 @@ function AppContextProvider(props) {
         correctAnswersCounter,
         startQuiz,
         countCorrectAnswers,
+        fetchedQuestions,
         setFetchedQuestions,
         formData,
         setFormData,
