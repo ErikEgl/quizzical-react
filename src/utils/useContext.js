@@ -13,83 +13,38 @@ function AppContextProvider(props) {
   function startQuiz() {
     setGameEnd(false);
     setCorrectAnswersCounter(0);
-    const newQuestionsArr = [];
-    fetchedQuestions.map((question) => {
-      if(question.type === 'boolean') {
-        newQuestionsArr.push({
-          category: question.category,
+  
+    const newQuestionsArr = fetchedQuestions.map((question) => {
+      const answers = [
+        {
           id: nanoid(),
-          question: question.question,
-          showHint: false,
-          showHintErrorMessage: false,
-          answers: [
-            {
-              id: nanoid(),
-              answer: question.correct_answer,
-              isCorrect: true,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-            {
-              id: nanoid(),
-              answer: question.incorrect_answers[0],
-              isCorrect: false,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-          ],
-        });
-      } else {
-        newQuestionsArr.push({
-          category: question.category,
+          answer: question.correct_answer,
+          isCorrect: true,
+          isHeld: false,
+          key: nanoid(),
+          difficulty: question.difficulty,
+        },
+        ...question.incorrect_answers.map((answer) => ({
           id: nanoid(),
-          question: question.question,
-          showHint: false,
-          showHintErrorMessage: false,
-          answers: [
-            {
-              id: nanoid(),
-              answer: question.correct_answer,
-              isCorrect: true,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-            {
-              id: nanoid(),
-              answer: question.incorrect_answers[0],
-              isCorrect: false,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-            {
-              id: nanoid(),
-              answer: question.incorrect_answers[1],
-              isCorrect: false,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-            {
-              id: nanoid(),
-              answer: question.incorrect_answers[2],
-              isCorrect: false,
-              isHeld: false,
-              key: nanoid(),
-              difficulty: question.difficulty,
-            },
-          ],
-        });
-      }
-      newQuestionsArr.map((quizItem) => {
-        return quizItem.answers.sort(() => Math.random() - 0.5);
-      });
-      setRestructuredQuestionsArray(newQuestionsArr);
-      return newQuestionsArr;
+          answer: answer,
+          isCorrect: false,
+          isHeld: false,
+          key: nanoid(),
+          difficulty: question.difficulty,
+        })),
+      ];
+  
+      return {
+        category: question.category,
+        id: nanoid(),
+        question: question.question,
+        showHint: false,
+        showHintErrorMessage: false,
+        answers: answers.sort(() => Math.random() - 0.5),
+      };
     });
+  
+    setRestructuredQuestionsArray(newQuestionsArr);
     setStartGame((prevVal) => !prevVal);
   }
 
