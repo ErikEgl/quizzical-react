@@ -14,7 +14,7 @@ function AppContextProvider(props) {
     setGameEnd(false);
     setCorrectAnswersCounter(0);
   
-    const newQuestionsArr = fetchedQuestions.map((question) => {
+    const newQuestionsArr = fetchedQuestions.results.map((question) => {
       const answers = [
         {
           id: nanoid(),
