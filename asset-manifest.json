@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/quizzical-react/static/css/main.21202f2b.css",
-    "main.js": "/quizzical-react/static/js/main.046edba6.js",
+    "main.css": "/quizzical-react/static/css/main.06190a4a.css",
+    "main.js": "/quizzical-react/static/js/main.1df6ddcc.js",
     "static/media/light-bulb-on.svg": "/quizzical-react/static/media/light-bulb-on.f236426f94dbd4351fd6.svg",
     "static/media/light-bulb-off.svg": "/quizzical-react/static/media/light-bulb-off.0056f8cbe8bfae7f48ec.svg",
     "static/media/twitter.svg": "/quizzical-react/static/media/twitter.df391e9c37c2d181f98a.svg",
-    "static/media/whatsapp.svg": "/quizzical-react/static/media/whatsapp.008f1835dd05c4f72d51.svg",
+    "static/media/whatsapp.svg": "/quizzical-react/static/media/whatsapp.94d8287b2cc72d90577f.svg",
     "static/media/linkedin.svg": "/quizzical-react/static/media/linkedin.d09d64fe30b941c2d5db.svg",
     "static/media/facebook.svg": "/quizzical-react/static/media/facebook.773c1a5a33d10795c60a.svg",
-    "static/media/login.svg": "/quizzical-react/static/media/login.dca3ecb88f54115e16ca.svg",
+    "static/media/login.svg": "/quizzical-react/static/media/login.72bed96664111478ae60.svg",
     "index.html": "/quizzical-react/index.html",
     "static/media/close.svg": "/quizzical-react/static/media/close.a8317e023b9d0c3ecbd6.svg",
-    "main.21202f2b.css.map": "/quizzical-react/static/css/main.21202f2b.css.map",
-    "main.046edba6.js.map": "/quizzical-react/static/js/main.046edba6.js.map"
+    "main.06190a4a.css.map": "/quizzical-react/static/css/main.06190a4a.css.map",
+    "main.1df6ddcc.js.map": "/quizzical-react/static/js/main.1df6ddcc.js.map"
   },
   "entrypoints": [
-    "static/css/main.21202f2b.css",
-    "static/js/main.046edba6.js"
+    "static/css/main.06190a4a.css",
+    "static/js/main.1df6ddcc.js"
   ]
 }
